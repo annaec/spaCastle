@@ -1,0 +1,346 @@
+/* 
+Project Name: Blank Template
+Client: Your Client
+Author: Your Name
+Developer @GA in NYC
+*/
+
+
+/******************************************
+/* SETUP                   
+/*******************************************/
+
+/* Box Model Hack */
+* {
+     -moz-box-sizing: border-box; /* Firexfox */
+     -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+     box-sizing: border-box; /* IE */
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+.alignright {
+	float: right; 
+	padding: 0 0 10px 10px; /* note the padding around a right floated image */
+}
+
+.alignleft {
+	float: left; 
+	padding: 0 10px 10px 0; /* note the padding around a left floated image */
+}
+
+/******************************************
+/* BASE STYLES                   
+/*******************************************/
+
+body {
+     font-size: 12px;
+     line-height: 1.4;
+     font-family: Helvetica, Arial, sans-serif;
+
+}
+
+@font-face{
+  font-family: "menlo";
+  src: ../fonts/url("Menlo-Regular.ttf");
+}
+
+
+
+/******************************************
+/* LAYOUT                   
+/*******************************************/
+
+/* Center the container */
+#container {
+	width: 98%;
+	margin: auto;
+  font-family:'menlo';
+  letter-spacing: .1em;
+  border: 8px double black;
+  height:100vh;
+}
+
+
+#welcome {
+    font-size: .65em;
+    line-height:1.5em;
+    margin: 0, 10%;
+}
+
+
+.map {
+     width: 600px;
+     margin:5% auto;
+     display:none;
+     text-align:center;
+     clear:both;
+     height:600px;
+}
+
+
+img {
+  width: 50%;
+  margin: 25px auto;
+}
+
+.rooms {
+     float:left;
+     width: 200px;
+     height:200px;
+     border: 1px solid black;
+}
+
+.mapArrival {
+     background-color: blue;
+}
+
+input {
+     outline:none;
+     border:2px solid rgba(186,168,195, .4);
+     width: 100%;
+     height: 30px;
+     text-transform: uppercase;
+     font-family: 'menlo';
+}
+
+ul {
+     list-style:none;
+}
+
+.dialogueBox {
+     width: 400px;
+     margin:5% auto;
+     text-align:center;
+     clear:both;
+     height:200px;
+     background-color: black; 
+     position: absolute;
+     top: 100px;
+     left: 0;
+     right: 0;
+     visibility: hidden;
+}
+/*-------------------fix and paste typing animation
+body{
+  background: #000;
+  padding-top: 10px;
+} 
+
+p{
+  color: white; 
+  font-family: "Courier";
+  font-size: 12px;
+  margin: 10px 0 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 30em;
+  animation: type 4s steps(60, end); 
+}
+
+p:nth-child(2){
+  animation: type2 8s steps(60, end);
+}
+
+p a{
+  color: white;
+  text-decoration: none;
+}
+
+span{
+  animation: blink 1s infinite;
+}
+
+@keyframes type{ 
+  from { width: 0; } 
+} 
+
+@keyframes type2{
+  0%{width: 0;}
+  50%{width: 0;}
+  100%{ width: 100; } 
+} 
+
+@keyframes blink{
+  to{opacity: .0;}
+}
+
+::selection{
+  background: black;
+}
+
+.inventory {
+  clear:both;
+  margin:4% 10%;
+
+}
+
+.tokens {
+  float:left;
+  height: 10px;
+  width:10px;
+  margin:2%;
+  background-color:black;
+  display:none;
+}
+h2 {
+  letter-spacing: .18em;
+  font-style: italic;
+  font-weight: normal;
+}
+
+#credits {
+  float:right;
+  width: 45%;
+}
+
+h5 {
+  font-size:.7em;
+  font-weight:normal;
+  font-style:italic;
+}
+
+
+
+
+/************************************ROOMS******************************/
+
+/********* STAIRS ROOM **********/
+
+#mapStairs {
+  border: 10px dotted black;
+  background-image: url("../images/spa-castle.jpg");
+}
+
+#mapStairsCandle {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+#mapStairsGlass {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+/********* BREAD ROOM **********/
+
+#mapBread {
+  border: 10px dotted black;
+  background-image: url("../images/spa-castle.jpg");
+}
+
+#mapBreadWater {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+#mapBreadKnife {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+/********* FLOWERS ROOM **********/
+
+#mapFlowers {
+  border: 10px dotted black;
+  background-image: url("../images/spa-castle.jpg");
+}
+
+#mapFlowerJewel {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+#mapFlowerTooth {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+/********* MOUTHS ROOM **********/
+
+#mapMouths {
+  border: 10px dotted black;
+  background-image: url("../images/spa-castle.jpg");
+}
+
+#mapMouthsBread {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+#mapMouthsGlass {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+
+/********* HANDS ROOM **********/
+
+#mapHands {
+  border: 10px dotted black;
+  background-image: url("../images/spa-castle.jpg");
+}
+
+#mapHandsRing {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+#mapHandsDoll{
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+
+/********* RAIN ROOM **********/
+
+#mapRain {
+  border: 10px dotted black;
+  background-image: url("../images/spa-castle.jpg");
+}
+
+#mapRainSeed {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+#mapRainDoll{
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+
+/********* MIRRORS ROOM **********/
+
+#mapMirrors {
+  border: 10px dotted black;
+  background-image: url("../images/spa-castle.jpg");
+}
+
+#mapMirrorsFrame {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+#mapMirrorsRadio{
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+
+/********* JEWELS ROOM **********/
+
+#mapJewels {
+  border: 10px dotted black;
+  background-image: url("../images/spa-castle.jpg");
+}
+
+#mapJewelsTooth {
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+#mapJewelsWorm{
+/*  background-image: url("../images/spa-castle.jpg");*/
+}
+
+
+
+
