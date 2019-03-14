@@ -1,3 +1,8 @@
+
+
+
+
+
 var characterInputs = [
 	{"NEW NAME" : updatePlayerName}, 
 	{"ENGAGE" : engage}, 
@@ -37,6 +42,8 @@ var newPlayer = {
 	inventory: [],
 	name: null
 }
+
+
 
 function updateName(newName) {
 	newPlayer.name = newName;
@@ -272,12 +279,44 @@ function useMirror() {
 
 
 //START LOCATION
-var currentLocation = "s_gate";
+
+var currentLocation = $("#library");
+var breadRoom = $("#bread");
+var stairsRoom = $("#stairs");
+
+
 
 $(document).ready(function () {
 
-	$("#console").fadeIn(1000);
+
+	//Fade in inventory and map
+	$(".inventory").fadeIn(1000);
 	$(".map").fadeIn(1000);
+
+	
+
+
+	//Transfer blue highlight to clicked room
+	$(".rooms").click(function(){
+		currentLocation = this;
+		console.log(currentLocation);
+		$(".rooms").removeClass("mapArrival");
+		$(this).addClass("mapArrival");
+
+	//Check currentLocation	-- fix this! Or maybe 
+	if (currentLocation == "breadRoom") {
+		console.log("welcome to the bread room");
+	}
+
+	if(currentLocation == "stairsRoom"){
+		console.log("welcome to the stairs room");
+	}
+
+	});
+
+
+
+
 
 	//CONSOLE SCROLL ANIMATION
 	var $console = $('#console');
@@ -317,6 +356,7 @@ $(document).ready(function () {
 		}
 
 
+
 		////////// INPUTS //////////
 
 		//adventure object w/ current activity property & current location prop, current inventory
@@ -337,6 +377,7 @@ $(document).ready(function () {
 
 		////NAVIGATE MAP////
 
+
 		var arriveNorthwest = "<p>You are now at the northwestern corner of this world. You've heard legends of treasures in this realm, and peel your eyes for riches around you. Against all odds, a faint red glow is flickering against a tree root nearby. A ruby!</p>";
 		arriveNorthGate = "<p>You are now at the northern gate of the Castle. Your journey has made you thirsty. A wine cellar is beyond the northern Castle grounds, and you see an unattended wagon stacked with flasks of wine.</p>";
 		arriveNortheast = "<p>You are now at northeastern corner of this world. There is a chill in the north, and you see a cast-off cloak waiting for you the road.</p>";
@@ -347,6 +388,8 @@ $(document).ready(function () {
 		arriveSouthGate = "<p>You are now at the Southern Gate of the Castle grounds. You see a glint of light obscured in the soil and crouch towards it, wiping away the leaves and earth to find ... a sword!</p>";
 		arriveSoutheast = "<p>You are now at the southeastern corner of this world. In a clearing you see a young girl pantomiming a knight in battle. She is clutching a small hunting dagger in her hand, which she drops and kicks away at the sound of someone calling her home.</p>";
 		outerLimits = "<p>You've reached the outer limits of this world. Explore in another direction.</p>";
+
+		
 
 
 

@@ -1,3 +1,10 @@
+/* CSS TRICKS TO TRY
+
+Frosted glass slide up for messages
+https://codepen.io/trevoreyre/pen/bRrrEx
+
+
+
 /* 
 Project Name: Blank Template
 Client: Your Client
@@ -73,27 +80,13 @@ body {
   height:100vh;
 }
 
-
-#welcome {
-    font-size: .65em;
-    line-height:1.5em;
-    margin: 0, 10%;
-}
-
-
 .map {
      width: 600px;
-     margin:5% auto;
+     margin:2% auto;
      display:none;
      text-align:center;
      clear:both;
      height:600px;
-}
-
-
-img {
-  width: 50%;
-  margin: 25px auto;
 }
 
 .rooms {
@@ -120,12 +113,12 @@ ul {
      list-style:none;
 }
 
-
 .inventory {
   background-color: white;
-  padding:1%;
+  padding:0 1% 1% 1%;
   border: 5px dotted black;
   position: fixed;
+  display:none;
   left: 50%;
   bottom: 8px;
   transform: translateX(-50%);
@@ -140,7 +133,7 @@ ul {
   float:left;
   height: 20px;
   width:20px;
-  margin:2%;
+  margin:1% 2%;
   background-color:black;
 }
 h2 {
@@ -160,7 +153,6 @@ h5 {
   font-style:italic;
 }
 
-
 .dialogueBox {
      width: 400px;
      margin:5% auto;
@@ -172,10 +164,11 @@ h5 {
      top: 100px;
      left: 0;
      right: 0;
-     /*visibility: hidden;*/
+     visibility: hidden;
 }
 
 /******* TYPEWRITER ANIMATION *********/
+
 
 .dialogueBox p{
   color: white;
@@ -212,7 +205,6 @@ h5 {
 }
 
 
-
 /************************************ROOMS******************************/
 
 /********* STAIRS ROOM **********/
@@ -230,6 +222,7 @@ h5 {
 /*  background-image: url("../images/spa-castle.jpg");*/
 }
 
+
 /********* BREAD ROOM **********/
 
 #mapBread {
@@ -245,6 +238,7 @@ h5 {
 /*  background-image: url("../images/spa-castle.jpg");*/
 }
 
+
 /********* FLOWERS ROOM **********/
 
 #mapFlowers {
@@ -259,6 +253,7 @@ h5 {
 #mapFlowerTooth {
 /*  background-image: url("../images/spa-castle.jpg");*/
 }
+
 
 /********* MOUTHS ROOM **********/
 
@@ -276,6 +271,7 @@ h5 {
 }
 
 
+
 /********* HANDS ROOM **********/
 
 #mapHands {
@@ -290,6 +286,7 @@ h5 {
 #mapHandsDoll{
 /*  background-image: url("../images/spa-castle.jpg");*/
 }
+
 
 
 /********* RAIN ROOM **********/
