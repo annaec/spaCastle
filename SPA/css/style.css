@@ -133,6 +133,50 @@ ul {
      right: 0;
      visibility: hidden;
 }
+
+
+.inventory {
+  background-color: white;
+  padding:1%;
+  border: 5px dotted black;
+  position: fixed;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  width:600px;
+}
+
+.inventory h2{
+  padding-left:1%;
+}
+
+.tokens {
+  float:left;
+  height: 20px;
+  width:20px;
+  margin:2%;
+  background-color:black;
+}
+h2 {
+  letter-spacing: .18em;
+  font-style: italic;
+  font-weight: normal;
+}
+
+#credits {
+  float:right;
+  width: 45%;
+}
+
+h5 {
+  font-size:.7em;
+  font-weight:normal;
+  font-style:italic;
+}
+
+
+
+
 /*-------------------fix and paste typing animation
 body{
   background: #000;
@@ -181,37 +225,7 @@ span{
   background: black;
 }
 
-.inventory {
-  clear:both;
-  margin:4% 10%;
-
-}
-
-.tokens {
-  float:left;
-  height: 10px;
-  width:10px;
-  margin:2%;
-  background-color:black;
-  display:none;
-}
-h2 {
-  letter-spacing: .18em;
-  font-style: italic;
-  font-weight: normal;
-}
-
-#credits {
-  float:right;
-  width: 45%;
-}
-
-h5 {
-  font-size:.7em;
-  font-weight:normal;
-  font-style:italic;
-}
-
+*/
 
 
 

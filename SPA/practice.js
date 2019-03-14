@@ -103,9 +103,9 @@ function moveWest() {
 
 
 function updateInventory() {
-	$("#inventory li").remove();
+	$(".inventory li").remove();
 		newPlayer.inventory.forEach( function (el) {
-			$("#inventory").append("<li>" + el + "</li>");
+			$(".inventory").append("<li>" + el + "</li>");
 		});
 }
 
@@ -329,9 +329,9 @@ $(document).ready(function () {
 
 		////TAKE COMMANDS////
 
-  // 		$("#inventory li").remove();
+  // 		$(".inventory li").remove();
 		// playerInventory.forEach( function (el) {
-		// 	$("#inventory").append("<li>" + el + "</li>");
+		// 	$(".inventory").append("<li>" + el + "</li>");
 		// });
 
 
