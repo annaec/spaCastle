@@ -1,4 +1,13 @@
+//var hasBeenClicked = false;
+//jQuery('#id').click(function () {
+ //   hasBeenClicked = true;
+//});
 
+//if (hasBeenClicked) {
+    // The link has been clicked.
+//} else {
+    // The link has not been clicked.
+//}
 
 
 
@@ -281,46 +290,29 @@ function useMirror() {
 //START LOCATION
 
 var currentLocation = $("#library");
-var breadRoom = $("#bread");
-var stairsRoom = $("#stairs");
-
 
 
 $(document).ready(function () {
+
 
 
 	//Fade in inventory and map
 	$(".inventory").fadeIn(1000);
 	$(".map").fadeIn(1000);
 
-	
-
-
 	//Transfer blue highlight to clicked room
 	$(".rooms").click(function(){
-		currentLocation = this;
-		console.log(currentLocation);
+		var roomClicked = this;
+		currentLocation = roomClicked;
+		console.log(roomClicked);
 		$(".rooms").removeClass("mapArrival");
-		$(this).addClass("mapArrival");
+		$(roomClicked).addClass("mapArrival");
+		// $(".map").fadeOut();
 
-	//Check currentLocation	-- fix this! Or maybe 
-	if (currentLocation == "breadRoom") {
-		console.log("welcome to the bread room");
-	}
-
-	if(currentLocation == "stairsRoom"){
-		console.log("welcome to the stairs room");
-	}
-
+	$(".backToLibrary").click(function(){
+	
 	});
-
-
-
-
-
-	//CONSOLE SCROLL ANIMATION
-	var $console = $('#console');
-	$console[0].scrollTop = $console[0].scrollHeight;
+	});
 
 
 
@@ -328,51 +320,15 @@ $(document).ready(function () {
 		e.preventDefault();
 
 
-		//UPPERCASE 
-		var input = $("#commandLine").val().toUpperCase();
-
-		characterInputs.forEach( function(el, i) {
-			var newProp;
-			for(var key in el) {
-				newProp = key;
-			}
-			//console.log(newProp);
-			//if element inside characterInputs == the user's input, run the object's function
-			if(newProp == input) {
-				characterInputs[i][newProp]();
-			} 
-		});
-
 		//ANIMATE SCROLL
 		var $console = $('#console');
 		$console.animate({ scrollTop: $console[0].scrollHeight }, "slow");
-
-		//EMPTY COMMAND LINE
-		$("#commandLine").val("");
 
 		//CLEAR MAP --- Need this to fire every move, not every form submit
 		function clearMap() {
 			$(".rooms").removeClass("mapArrival");
 		}
 
-
-
-		////////// INPUTS //////////
-
-		//adventure object w/ current activity property & current location prop, current inventory
-
-
-
-		// else {
-		// 	$("<p>You do not have this item in your inventory! Continue to explore, or try another solution.</p>").insertBefore("#placeholder").fadeIn(1000);
-		// }
-
-		////TAKE COMMANDS////
-
-  // 		$(".inventory li").remove();
-		// playerInventory.forEach( function (el) {
-		// 	$(".inventory").append("<li>" + el + "</li>");
-		// });
 
 
 		////NAVIGATE MAP////
@@ -564,13 +520,7 @@ $(document).ready(function () {
 
 		}
 
-		//WRONG INPUT////
-
-		//if input == __ || __
-		// else { 
-		// 	$("<p>I do not understand " + input + ". To see a list of commands, type 'HELP'.</p>").hide().insertBefore("#placeholder").fadeIn(1000);	
-		// }
-
+	
 	// end form submit function
 	});
 
