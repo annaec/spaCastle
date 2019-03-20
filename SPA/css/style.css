@@ -3,7 +3,8 @@
 Frosted glass slide up for messages
 https://codepen.io/trevoreyre/pen/bRrrEx
 
-
+Cursor styles
+https://css-tricks.com/almanac/properties/c/cursor/
 
 /* 
 Project Name: Blank Template
@@ -100,6 +101,27 @@ body {
      background-color: blue;
 }
 
+.roomGrow {
+    height:100%;
+    width:100%;
+    background-image: url("../images/spa-castle.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition-duration: 2s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0; 
+}
+
+.roomShrink {
+     width: 200px;
+     height:200px;
+     border: 1px solid black;
+     transition:.3s;
+}
+
+
 input {
      outline:none;
      border:2px solid rgba(186,168,195, .4);
@@ -127,6 +149,17 @@ ul {
 
 .inventory h2{
   padding-left:1%;
+}
+
+.hiddenLink {
+  background-color: black;
+  color:white;
+  padding:1%;
+  position: fixed;
+  display:none;
+  left: 10%;
+  bottom: 8px;
+  cursor: pointer;
 }
 
 .tokens {

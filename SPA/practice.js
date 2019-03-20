@@ -289,30 +289,45 @@ function useMirror() {
 
 //START LOCATION
 
-var currentLocation = $("#library");
+
 
 
 $(document).ready(function () {
 
 
-
+var currentLocation = $("#library");
 	//Fade in inventory and map
 	$(".inventory").fadeIn(1000);
 	$(".map").fadeIn(1000);
 
+
+
 	//Transfer blue highlight to clicked room
+	//Changed to ease new room into full screen then back 
 	$(".rooms").click(function(){
 		var roomClicked = this;
 		currentLocation = roomClicked;
 		console.log(roomClicked);
-		$(".rooms").removeClass("mapArrival");
-		$(roomClicked).addClass("mapArrival");
-		// $(".map").fadeOut();
+		$(".rooms").removeClass("mapArrival roomShrink");
+		$(roomClicked).addClass("mapArrival roomGrow");
+		$(".hiddenLink").fadeIn();
 
-	$(".backToLibrary").click(function(){
+		$(".hiddenLink").click(function(){
+			$(this).fadeOut();
+			$(roomClicked).addClass("roomShrink").removeClass("roomGrow");
+
+		});	
+
+	});
+
+
 	
-	});
-	});
+
+
+
+
+
+
 
 
 
