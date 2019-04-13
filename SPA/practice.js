@@ -1,3 +1,8 @@
+// Game opens in map view, player icon is in library
+// Click begin button to open library screen
+
+
+
 //var hasBeenClicked = false;
 //jQuery('#id').click(function () {
  //   hasBeenClicked = true;
@@ -68,6 +73,8 @@ $(document).ready(function () {
 
 
 //Changed to ease new room into full screen then back 
+
+function roomSelect() {
 	$(".rooms").click(function(){
 		var roomClicked = this;
 		currentLocation = roomClicked;
@@ -83,8 +90,12 @@ $(document).ready(function () {
 			$(roomClicked).addClass("roomShrink").removeClass("roomGrow");
 
 		});	
-
 	});
+}
+
+$("#stairs").click(function() {
+	roomSelect();
+})
 // look into shopping cart behavior
 	$(".backToLibrary").click(function(){
 		console.log(parent.history);
@@ -102,3 +113,5 @@ $(document).ready(function () {
 // end document ready
 });
 
+/////////////// BUGS /////////////////
+// How to make the roomSelect function work
