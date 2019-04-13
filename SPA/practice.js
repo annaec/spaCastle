@@ -67,24 +67,22 @@ $(document).ready(function () {
 
 
 
-//Transfer blue highlight to clicked room
 //Changed to ease new room into full screen then back 
 	$(".rooms").click(function(){
 		var roomClicked = this;
 		currentLocation = roomClicked;
 		console.log(roomClicked);
 
-	$(".rooms").removeClass("mapArrival");
-		$(roomClicked).addClass("mapArrival");
-		// $(".rooms").removeClass("mapArrival roomShrink");
-		// $(roomClicked).addClass("mapArrival roomGrow");
-		// $(".hiddenLink").fadeIn();
+		$(".rooms").removeClass("mapArrival roomShrink");
+		$(roomClicked).addClass("mapArrival roomGrow");
 
-		// $(".hiddenLink").click(function(){
-		// 	$(this).fadeOut();
-		// 	$(roomClicked).addClass("roomShrink").removeClass("roomGrow");
+		$(".hiddenLink").fadeIn();
 
-		// });	
+		$(".hiddenLink").click(function(){
+			$(this).fadeOut();
+			$(roomClicked).addClass("roomShrink").removeClass("roomGrow");
+
+		});	
 
 	});
 // look into shopping cart behavior

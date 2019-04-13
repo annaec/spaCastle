@@ -88,6 +88,11 @@ body {
      text-align:center;
      clear:both;
      height:600px;
+    position: absolute;
+    z-index:1;
+    top: 0;
+    left: 0;
+    right: 0; 
 }
 
 .rooms {
@@ -95,6 +100,7 @@ body {
      width: 200px;
      height:200px;
      border: 1px solid black;
+
 }
 
 .mapArrival {
@@ -102,13 +108,17 @@ body {
 }
 
 .roomGrow {
-    height:100%;
-    width:100%;
+    width: 600px;
+     text-align:center;
+     clear:both;
+     height:600px;
+   
     background-image: url("../images/spa-castle.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     transition-duration: 2s;
     position: absolute;
+    z-index:2;
     top: 0;
     left: 0;
     right: 0; 
@@ -121,7 +131,9 @@ body {
      transition:.3s;
 }
 
-
+.disappear {
+  display:none;
+}
 input {
      outline:none;
      border:2px solid rgba(186,168,195, .4);
@@ -369,6 +381,7 @@ h5 {
 /*  background-image: url("../images/spa-castle.jpg");*/
 }
 
-
+/**********************BUGS *******************/
+/* -make the roomClicked not disappear off map when it grows
 
 
