@@ -109,15 +109,14 @@ body {
 
 .roomGrow {
     width: 600px;
-     text-align:center;
-     clear:both;
-     height:600px;
-   
+    text-align:center;
+    clear:both;
+    height:600px;
     background-image: url("../images/spa-castle.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    transition-duration: 2s;
     position: absolute;
+    transition:1s;
     z-index:2;
     top: 0;
     left: 0;

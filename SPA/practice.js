@@ -71,88 +71,67 @@ $(document).ready(function () {
 	$(".map").fadeIn(1000);
 
 
-
-//Changed to ease new room into full screen then back 
-
-// function roomSelect() {
-// 	$(".rooms").click(function(){
-// 		var roomClicked = this;
-// 		currentLocation = roomClicked;
-// 		console.log(roomClicked);
-
-// 		$(".rooms").removeClass("mapArrival roomShrink");
-// 		$(roomClicked).addClass("mapArrival roomGrow");
-
-// 		$(".hiddenLink").fadeIn();
-
-// 		$(".hiddenLink").click(function(){
-// 			$(this).fadeOut();
-// 			$(roomClicked).addClass("roomShrink").removeClass("roomGrow");
-
-// 		});	
-// 	});
-// }
-
-function roomSelect(room) {
-	$(".rooms").removeClass("mapArrival roomShrink");
-	$(room).addClass("mapArrival roomGrow");
-
-	$(".hiddenLink").fadeIn();
-
-	$(".hiddenLink").click(function(){
-		$(this).fadeOut();
-		$(room).addClass("roomShrink").removeClass("roomGrow");
-	});	
-}
-
-$("#stairs").click(function() {
-	roomSelect("#stairs");
-})
-
-$("#bread").click(function() {
-	roomSelect("#bread");
-})
-
-$("#flowers").click(function() {
-	roomSelect("#flowers");
-})
-
-$("#jewels").click(function() {
-	roomSelect("#jewels");
-})
-
-$("#library").click(function() {
-	roomSelect("#library");
-})
-
-$("#mouths").click(function() {
-	roomSelect("#mouths");
-})
-
-$("#mirrors").click(function() {
-	roomSelect("#mirrors");
-})
-
-$("#rain").click(function() {
-	roomSelect("#rain");
-})
-
-$("#hands").click(function() {
-	roomSelect("#hands");
-})
-
-// look into shopping cart behavior
-	$(".backToLibrary").click(function(){
-		console.log(parent.history);
-		 parent.history.back();
-		return false;
-
-	});
-
-//CLEAR MAP 
+	//CLEAR MAP 
 	function clearMap() {
-		$(".rooms").removeClass("mapArrival");
+		$(".rooms").removeClass("mapArrival roomShrink");
 	}
+
+
+
+	function roomSelect(room) {
+		clearMap();
+
+		$(room).addClass("mapArrival roomGrow");
+
+		$(".hiddenLink").fadeIn();
+
+		$(".hiddenLink").click(function(){
+			$(this).fadeOut();
+			$(room).addClass("roomShrink").removeClass("roomGrow");
+		});	
+	}
+
+
+
+
+
+	$("#stairs").click(function() {
+		roomSelect("#stairs");
+	})
+
+	$("#bread").click(function() {
+		roomSelect("#bread");
+	})
+
+	$("#flowers").click(function() {
+		roomSelect("#flowers");
+	})
+
+	$("#jewels").click(function() {
+		roomSelect("#jewels");
+	})
+
+	$("#library").click(function() {
+		roomSelect("#library");
+	})
+
+	$("#mouths").click(function() {
+		roomSelect("#mouths");
+	})
+
+	$("#mirrors").click(function() {
+		roomSelect("#mirrors");
+	})
+
+	$("#rain").click(function() {
+		roomSelect("#rain");
+	})
+
+	$("#hands").click(function() {
+		roomSelect("#hands");
+	})
+
+
 
 
 // end document ready
