@@ -81,19 +81,6 @@ body {
   height:100vh;
 }
 
-.map {
-     width: 600px;
-     margin:2% auto;
-     display:none;
-     text-align:center;
-     clear:both;
-     height:600px;
-    position: absolute;
-    z-index:1;
-    top: 0;
-    left: 0;
-    right: 0; 
-}
 
 .rooms {
      float:left;
@@ -162,7 +149,7 @@ ul {
   padding-left:1%;
 }
 
-.hiddenLink {
+.hiddenLink{
   background-color: black;
   color:white;
   padding:1%;
@@ -172,6 +159,15 @@ ul {
   bottom: 8px;
   cursor: pointer;
 }
+
+.continue {
+  background-color: black;
+  color:white;
+  padding:1%;
+  cursor: pointer;
+}
+
+
 
 .tokens {
   float:left;
@@ -208,8 +204,12 @@ h5 {
      top: 100px;
      left: 0;
      right: 0;
-     visibility: hidden;
+     display:none;
 }
+
+
+
+
 
 /******* TYPEWRITER ANIMATION *********/
 
@@ -253,9 +253,50 @@ h5 {
 
 /********LIBRARY***************/
 
+#begin, #bookShelf{
+    animation: blink .8s linear infinite;
+    cursor: pointer;
+}
+
  #bookShelf {
     display: none;
  }
+
+ .map, #shelfRoom, #emptyBook{
+     width: 600px;
+     margin:2% auto;
+     display:none;
+     text-align:center;
+     clear:both;
+     height:600px;
+    position: absolute;
+    z-index:1;
+    top: 0;
+    left: 0;
+    right: 0; 
+}
+
+#shelfRoom {
+  background-color:red;
+  z-index:2;
+  margin:0 auto;
+}
+
+.chooseBook {
+    float:left;
+    width:200px;
+    height: 600px;
+    border:2px solid black;
+    cursor:pointer;
+}
+
+#emptyBook {
+  background-color:white;
+  z-index:3;
+  margin:0 auto;
+  border:2px solid black;
+
+}
 
 /********* STAIRS ROOM **********/
 

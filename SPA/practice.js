@@ -66,9 +66,20 @@ var currentLocation = $("#library");
 $(document).ready(function () {
 	$(currentLocation).addClass("mapArrival");
 
-	//Fade in inventory and map
+	// //Fade in message
+	// $(".dialogueBox").fadeIn(1000);
+	// //Fade in inventory and map
+	// $(".inventory").delay(6000).fadeIn(1000);
+	// $(".map").delay(6000).fadeIn(1000);
+	// //Fade out message
+	// $(".dialogueBox").delay(5000).fadeOut(1000);
+
+
 	$(".inventory").fadeIn(1000);
 	$(".map").fadeIn(1000);
+	
+
+///////////////// ROOM GENERAL FUNCTIONS /////////////////////
 
 
 	//CLEAR MAP 
@@ -92,11 +103,12 @@ $(document).ready(function () {
 	}
 
 
-
+///////////////// ROOM CLICK FUNCTIONS /////////////////////
 
 
 	$("#stairs").click(function() {
 		roomSelect("#stairs");
+
 	})
 
 	$("#bread").click(function() {
@@ -111,9 +123,49 @@ $(document).ready(function () {
 		roomSelect("#jewels");
 	})
 
+
+
+
+
+
+
+
+
+
 	$("#library").click(function() {
 		roomSelect("#library");
+		$("#begin").fadeOut();
+		$("#bookShelf").fadeIn();
+
 	})
+
+	$("#bookShelf").click(function() {
+		$("#shelfRoom").fadeIn();	
+	})
+
+	$(".chooseBook").click(function() {	
+		$("#emptyBook").fadeIn();
+
+	})
+
+	$(".continue").click(function() {
+		$(".insideLibrary").fadeOut();
+	})
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	$("#mouths").click(function() {
 		roomSelect("#mouths");
@@ -138,4 +190,10 @@ $(document).ready(function () {
 });
 
 /////////////// BUGS /////////////////
-// How to make the roomSelect function work [DONE]
+// FIX BACK BUTTON
+// BOOKSHELF WONT DISAPPEAR!!!!
+
+
+
+
+
