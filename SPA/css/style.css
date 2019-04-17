@@ -253,19 +253,24 @@ h5 {
 
 /********LIBRARY***************/
 
-#begin, #bookShelf{
+#begin{
     animation: blink .8s linear infinite;
     cursor: pointer;
 }
 
 
- .map, #shelfRoom, #emptyBook{
-     width: 600px;
-     margin:2% auto;
-     display:none;
-     text-align:center;
-     clear:both;
-     height:600px;
+ #bookShelf {
+    visibility:hidden;
+    cursor:pointer;
+ }
+
+ .map, #shelfRoom, #emptyBook {
+    width: 600px;
+    margin:2% auto;
+    display:none;
+    text-align:center;
+    clear:both;
+    height:600px;
     position: absolute;
     z-index:1;
     top: 0;
@@ -280,11 +285,11 @@ h5 {
 }
 
 .chooseBook {
-    float:left;
-    width:200px;
-    height: 600px;
-    border:2px solid black;
-    cursor:pointer;
+  float:left;
+  width:200px;
+  height: 600px;
+  border:2px solid black;
+  cursor:pointer;
 }
 
 #emptyBook {
@@ -292,12 +297,8 @@ h5 {
   z-index:3;
   margin:0 auto;
   border:2px solid black;
-
 }
 
- #bookShelf {
-    display: none;
- }
 
 /********* STAIRS ROOM **********/
 

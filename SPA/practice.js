@@ -82,7 +82,6 @@ $(document).ready(function () {
 ///////////////// ROOM GENERAL FUNCTIONS /////////////////////
 
 
-	//CLEAR MAP 
 	function clearMap() {
 		$(".rooms").removeClass("mapArrival roomShrink");
 	}
@@ -133,18 +132,19 @@ $(document).ready(function () {
 
 
 	$("#library").click(function() {
+
 		roomSelect("#library");
 		$("#begin").fadeOut();
-		$("#bookShelf").fadeIn();
+		$("#bookShelf").css("visibility","visible");
 
 
 		$("#bookShelf").click(function() {
+			$("#bookShelf").css("visibility","inherit");
 			$("#shelfRoom").fadeIn();	
 		})
 
 		$(".chooseBook").click(function() {	
 			$("#emptyBook").fadeIn();
-
 		})
 
 		$(".continue").click(function() {
