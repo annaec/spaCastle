@@ -264,6 +264,15 @@ h5 {
     cursor:pointer;
  }
 
+ #libraryObject {
+  display:none;
+  margin: 0 auto;
+  padding:2%;
+  border: 2px solid black;
+  background:blue;
+  cursor: pointer;
+ }
+
  .map, #shelfRoom, #emptyBook {
     width: 600px;
     margin:2% auto;

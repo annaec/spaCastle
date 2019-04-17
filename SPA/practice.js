@@ -61,6 +61,9 @@
 
 // store last page clicked in a variable
 
+var inventoryArray = [];
+var inventory = $(".inventory")
+
 var currentLocation = $("#library");
 
 $(document).ready(function () {
@@ -75,7 +78,7 @@ $(document).ready(function () {
 	// $(".dialogueBox").delay(5000).fadeOut(1000);
 
 
-	$(".inventory").fadeIn(1000);
+	$(inventory).fadeIn(1000);
 	$(".map").fadeIn(1000);
 	
 
@@ -100,6 +103,20 @@ $(document).ready(function () {
 			$(room).addClass("roomShrink").removeClass("roomGrow");
 		});	
 	}
+
+	function updateInventory() {
+	$(".inventory li").remove();
+		inventoryArray.forEach( function (el) {
+			$(inventory).append("<li>" + el + "</li>");
+		});
+	}
+
+	function pickUp(object) {
+		inventoryArray.push(object);
+		updateInventory();
+	}
+
+
 
 
 ///////////////// ROOM CLICK FUNCTIONS /////////////////////
@@ -149,12 +166,14 @@ $(document).ready(function () {
 
 		$(".continue").click(function() {
 			$(".insideLibrary").fadeOut();
+			$("#libraryObject").fadeIn();
 		})
-
 
 	})
 
-
+		$("#libraryObject").click(function() {
+				pickUp("#libraryObject");
+		})
 	
 
 
@@ -194,7 +213,7 @@ $(document).ready(function () {
 
 /////////////// BUGS /////////////////
 // FIX BACK BUTTON
-// BOOKSHELF WONT DISAPPEAR!!!!
+// BOOKSHELF WONT DISAPPEAR!!!! [FIXED W/ VISIBILITY INSTEAD OF DISPLAY, BUT I DON'T KNOW WHY IT WORKED]
 // GET RID OF BACK BUTTON DURING LIBRARY SEQUENCE
 // NEXT PART OF LIBRARY SEQUENCE: TEXT ABOUT DISAPPEARING BOOKSHELF AND EMPTY BOOK
 // PICK UP OBJECTS IN LIBRARY???
