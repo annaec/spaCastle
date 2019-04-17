@@ -104,6 +104,9 @@ $(document).ready(function () {
 		});	
 	}
 
+////////FIX INVENTORY FUNCTIONS SO THEY ADD ELEMENTS TO THE INVENTORY INSTEAD OF STRINGS
+////////MAYBE ARRAY IS THE WRONG WAY TO DO IT?
+
 	function updateInventory() {
 	$(".inventory li").remove();
 		inventoryArray.forEach( function (el) {
