@@ -59,10 +59,11 @@
 // }
 
 
-// store last page clicked in a variable
 
+// store last page clicked in a variable
 var inventoryArray = [];
 var inventory = $(".inventory")
+var libraryObject = $("#libraryObject"); 
 
 var currentLocation = $("#library");
 
@@ -104,19 +105,11 @@ $(document).ready(function () {
 		});	
 	}
 
-////////FIX INVENTORY FUNCTIONS SO THEY ADD ELEMENTS TO THE INVENTORY INSTEAD OF STRINGS
-////////MAYBE ARRAY IS THE WRONG WAY TO DO IT?
-
-	function updateInventory() {
-	$(".inventory li").remove();
-		inventoryArray.forEach( function (el) {
-			$(inventory).append("<li>" + el + "</li>");
-		});
-	}
-
+//////// PICK UP ITEM AND ADD TO INVENTORY
 	function pickUp(object) {
 		inventoryArray.push(object);
-		updateInventory();
+		$(object).fadeIn();
+		console.log(inventoryArray);
 	}
 
 
@@ -174,8 +167,10 @@ $(document).ready(function () {
 
 	})
 
-		$("#libraryObject").click(function() {
-				pickUp("#libraryObject");
+		$(libraryObject).click(function() {
+				pickUp("#libraryToken");
+
+				// check to see if it's in the array
 		})
 	
 
