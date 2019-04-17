@@ -137,20 +137,23 @@ $(document).ready(function () {
 		$("#begin").fadeOut();
 		$("#bookShelf").fadeIn();
 
+
+		$("#bookShelf").click(function() {
+			$("#shelfRoom").fadeIn();	
+		})
+
+		$(".chooseBook").click(function() {	
+			$("#emptyBook").fadeIn();
+
+		})
+
+		$(".continue").click(function() {
+			$(".insideLibrary").fadeOut();
+		})
+
+
 	})
 
-	$("#bookShelf").click(function() {
-		$("#shelfRoom").fadeIn();	
-	})
-
-	$(".chooseBook").click(function() {	
-		$("#emptyBook").fadeIn();
-
-	})
-
-	$(".continue").click(function() {
-		$(".insideLibrary").fadeOut();
-	})
 
 	
 

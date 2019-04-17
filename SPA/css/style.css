@@ -258,9 +258,6 @@ h5 {
     cursor: pointer;
 }
 
- #bookShelf {
-    display: none;
- }
 
  .map, #shelfRoom, #emptyBook{
      width: 600px;
@@ -297,6 +294,10 @@ h5 {
   border:2px solid black;
 
 }
+
+ #bookShelf {
+    display: none;
+ }
 
 /********* STAIRS ROOM **********/
 
