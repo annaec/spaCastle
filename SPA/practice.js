@@ -91,7 +91,6 @@ $(document).ready(function () {
 	}
 
 
-
 	function roomSelect(room) {
 		clearMap();
 
@@ -117,32 +116,7 @@ $(document).ready(function () {
 
 ///////////////// ROOM CLICK FUNCTIONS /////////////////////
 
-
-	$("#stairs").click(function() {
-		roomSelect("#stairs");
-
-	})
-
-	$("#bread").click(function() {
-		roomSelect("#bread");
-	})
-
-	$("#flowers").click(function() {
-		roomSelect("#flowers");
-	})
-
-	$("#jewels").click(function() {
-		roomSelect("#jewels");
-	})
-
-
-
-
-
-
-
-
-
+////////////////////////////// LIBRARY /////////////////////////////////
 
 	$("#library").click(function() {
 
@@ -167,25 +141,33 @@ $(document).ready(function () {
 
 	})
 
-		$(libraryObject).click(function() {
-				pickUp("#libraryToken");
-
-				// check to see if it's in the array
-		})
+	$(libraryObject).click(function() {
+			$(this).fadeOut();
+			pickUp("#libraryToken");
+			console.log(inventoryArray[0]);
+	})
 	
 
 
 
 
 
+	$("#stairs").click(function() {
+		roomSelect("#stairs");
 
+	})
 
+	$("#bread").click(function() {
+		roomSelect("#bread");
+	})
 
+	$("#flowers").click(function() {
+		roomSelect("#flowers");
+	})
 
-
-
-
-
+	$("#jewels").click(function() {
+		roomSelect("#jewels");
+	})
 
 	$("#mouths").click(function() {
 		roomSelect("#mouths");
