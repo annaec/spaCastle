@@ -170,12 +170,9 @@ ul {
 
 
 .tokens {
-  float:left;
   margin:1% 2%;
-  background-color:black;
-  color:white;
-  display:none;
   padding:1%;
+  cursor:pointer;
 }
 h2 {
   letter-spacing: .18em;

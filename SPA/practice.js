@@ -63,7 +63,9 @@
 // store last page clicked in a variable
 var inventoryArray = [];
 var inventory = $(".inventory")
-var libraryObject = $("#libraryObject"); 
+var token = $(".token"); 
+
+
 
 var currentLocation = $("#library");
 
@@ -90,6 +92,8 @@ $(document).ready(function () {
 		$(".rooms").removeClass("mapArrival roomShrink");
 	}
 
+		
+
 
 	function roomSelect(room) {
 		clearMap();
@@ -105,14 +109,28 @@ $(document).ready(function () {
 	}
 
 //////// PICK UP ITEM AND ADD TO INVENTORY
-	function pickUp(object) {
-		inventoryArray.push(object);
-		$(object).fadeIn();
+
+
+	function pickUp(token) {
+		inventoryArray.push(token);
+		$(token).detach().appendTo(".inventory");
 		console.log(inventoryArray);
 	}
 
+ 	function removeItem(array, item) {
+		    for(var i in array) {
+		        if(array[i]==item){
+		            array.splice(i,1);
+		            break;
+            	}
+    		}
+		}
 
 
+	function use(token) {
+		removeItem(inventoryArray, token);
+		console.log(inventoryArray);
+	}
 
 ///////////////// ROOM CLICK FUNCTIONS /////////////////////
 
@@ -130,9 +148,53 @@ $(document).ready(function () {
 			$("#shelfRoom").fadeIn();	
 		})
 
-		$(".chooseBook").click(function() {	
+//////////////////// CONDENSE INTO ONE CLICK FUNCTION /////////////////////////////
+
+		$("#secretOne").click(function() {	
+			$("#tinyDoll").detach().appendTo("#library");			
 			$("#emptyBook").fadeIn();
 		})
+
+
+//////////////////////////FIX THISSSSSSS/////////////////////////////////////
+
+		// $("#tinyDoll").click(function() {
+
+		// 	var x = document.getElementById("tinyDoll").parentElement.nodeName;
+			
+		// 	if  (x = ".map") {
+		// 		pickUp("#tinyDoll");
+		// 	}
+
+
+		// 	} 
+
+		// 	// else if (".inventory").contains("#tinyDoll") = true {
+		// 	// 	use("#tinyDoll");
+		// 	// }
+
+		// })
+
+
+
+
+
+		$("#secretTwo").click(function() {	
+			$("#glass").detach().appendTo("#library");
+			$("#emptyBook").fadeIn();
+
+		})
+
+		$("#secretThree").click(function() {	
+			$("#water").detach().appendTo("#library");
+			$("#emptyBook").fadeIn();
+
+		})
+
+		
+
+/////////////////////////////////////////////////////////////////////////////
+
 
 		$(".continue").click(function() {
 			$(".insideLibrary").fadeOut();
@@ -141,11 +203,16 @@ $(document).ready(function () {
 
 	})
 
-	$(libraryObject).click(function() {
-			$(this).fadeOut();
-			pickUp("#libraryToken");
-			console.log(inventoryArray[0]);
-	})
+	
+		
+
+
+
+	// $(libraryObject).click(function() {
+	// 		$(this).fadeOut();
+	// 		pickUp("#libraryToken");
+	// 		console.log(inventoryArray[0]);
+	// })
 	
 
 
@@ -199,6 +266,7 @@ $(document).ready(function () {
 // PICK UP OBJECTS IN LIBRARY???
 // STORE WHICH SECRET PLAYER CHOOSES
 // HOW TO ADD THINGS TO INVENTORY
+// ROOMS WILL HAVE DARKROOM OVERLAY UNTIL THEY ARE UNLOCKED SO OBJECTS DO NOT HAVE TO BE INVISIBLE
 
 
 
