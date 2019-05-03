@@ -149,6 +149,7 @@ ul {
   padding-left:1%;
 }
 
+
 .hiddenLink{
   background-color: black;
   color:white;
@@ -174,15 +175,21 @@ ul {
   padding:1%;
   cursor:pointer;
 }
+
+.inventory div {
+  float:left;
+}
+
+.secretBook {
+  margin:1% 2%;
+  padding:1%;
+  display:none;
+}
+
 h2 {
   letter-spacing: .18em;
   font-style: italic;
   font-weight: normal;
-}
-
-#credits {
-  float:right;
-  width: 45%;
 }
 
 h5 {
