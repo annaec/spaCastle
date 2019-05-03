@@ -89,7 +89,7 @@ $(document).ready(function () {
 
 
 	function clearMap() {
-		$(".rooms").removeClass("mapArrival roomShrink");
+		$(".room").removeClass("mapArrival roomShrink");
 	}
 
 		
@@ -117,20 +117,41 @@ $(document).ready(function () {
 		console.log(inventoryArray);
 	}
 
- 	function removeItem(array, item) {
+ 	function removeItem(array, token) {
 		    for(var i in array) {
-		        if(array[i]==item){
+		        if(array[i]===token){
 		            array.splice(i,1);
 		            break;
             	}
-    		}
+    		}  	
 		}
 
 
 	function use(token) {
 		removeItem(inventoryArray, token);
+			$(token).detach();
 		console.log(inventoryArray);
+
+	
 	}
+
+	
+	function clickToken(token) {
+		if  ($(".map").has(token).length)  {
+			pickUp(token);
+
+		} else {
+			use(token);
+		}
+	}
+			
+
+	$(".token").click(function() {
+		clickToken(this);
+	})
+
+
+			
 
 ///////////////// ROOM CLICK FUNCTIONS /////////////////////
 
@@ -151,49 +172,26 @@ $(document).ready(function () {
 //////////////////// CONDENSE INTO ONE CLICK FUNCTION /////////////////////////////
 
 		$("#secretOne").click(function() {	
+			pickUp("#secretBookOne");
 			$("#tinyDoll").detach().appendTo("#library");			
-			$("#emptyBook").fadeIn();
+			$("#emptyBook, #secretBookOne").fadeIn();
+
 		})
-
-
-//////////////////////////FIX THISSSSSSS/////////////////////////////////////
-
-		// $("#tinyDoll").click(function() {
-
-		// 	var x = document.getElementById("tinyDoll").parentElement.nodeName;
-			
-		// 	if  (x = ".map") {
-		// 		pickUp("#tinyDoll");
-		// 	}
-
-
-		// 	} 
-
-		// 	// else if (".inventory").contains("#tinyDoll") = true {
-		// 	// 	use("#tinyDoll");
-		// 	// }
-
-		// })
-
-
-
 
 
 		$("#secretTwo").click(function() {	
+			pickUp("#secretBookTwo");
 			$("#glass").detach().appendTo("#library");
-			$("#emptyBook").fadeIn();
+			$("#emptyBook, #secretBookTwo").fadeIn();
 
 		})
 
-		$("#secretThree").click(function() {	
+		$("#secretThree").click(function() {
+			pickUp("#secretBookThree");	
 			$("#water").detach().appendTo("#library");
-			$("#emptyBook").fadeIn();
+			$("#emptyBook, #secretBookThree").fadeIn();
 
 		})
-
-		
-
-/////////////////////////////////////////////////////////////////////////////
 
 
 		$(".continue").click(function() {
@@ -203,25 +201,8 @@ $(document).ready(function () {
 
 	})
 
-	
-		
-
-
-
-	// $(libraryObject).click(function() {
-	// 		$(this).fadeOut();
-	// 		pickUp("#libraryToken");
-	// 		console.log(inventoryArray[0]);
-	// })
-	
-
-
-
-
-
 	$("#stairs").click(function() {
 		roomSelect("#stairs");
-
 	})
 
 	$("#bread").click(function() {
@@ -260,15 +241,18 @@ $(document).ready(function () {
 
 /////////////// BUGS /////////////////
 // FIX BACK BUTTON
-// BOOKSHELF WONT DISAPPEAR!!!! [FIXED W/ VISIBILITY INSTEAD OF DISPLAY, BUT I DON'T KNOW WHY IT WORKED]
 // GET RID OF BACK BUTTON DURING LIBRARY SEQUENCE
 // NEXT PART OF LIBRARY SEQUENCE: TEXT ABOUT DISAPPEARING BOOKSHELF AND EMPTY BOOK
-// PICK UP OBJECTS IN LIBRARY???
-// STORE WHICH SECRET PLAYER CHOOSES
-// HOW TO ADD THINGS TO INVENTORY
 // ROOMS WILL HAVE DARKROOM OVERLAY UNTIL THEY ARE UNLOCKED SO OBJECTS DO NOT HAVE TO BE INVISIBLE
+// MAKE SURE YOU CANT PICK UP HIDDEN ITEMS BY ACCIDENT
+// USE SECRET IN INVENTORY TO AFFECT END OF GAME (if secret x in inventory and special token used in certain room, end game)
 
-
+/////////// ACCOMPLISHMENTS /////////////
+// PICK UP OBJECTS IN LIBRARY
+// HOW TO ADD THINGS TO INVENTORY
+// STORE WHICH SECRET PLAYER CHOOSES
+// if you click [secretOne / Two / Three] add to inventory (or player object) and hide it . function clickBook(secret)
+// FLOAT INVENTORY
 
 
 
