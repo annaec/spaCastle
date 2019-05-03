@@ -89,7 +89,7 @@ $(document).ready(function () {
 
 
 	function clearMap() {
-		$(".rooms").removeClass("mapArrival roomShrink");
+		$(".room").removeClass("mapArrival roomShrink");
 	}
 
 		
@@ -117,20 +117,38 @@ $(document).ready(function () {
 		console.log(inventoryArray);
 	}
 
- 	function removeItem(array, item) {
+ 	function removeItem(array, token) {
 		    for(var i in array) {
-		        if(array[i]==item){
+		        if(array[i]===token){
 		            array.splice(i,1);
 		            break;
             	}
-    		}
+    		}  	
 		}
 
 
 	function use(token) {
 		removeItem(inventoryArray, token);
+			$(token).detach();
 		console.log(inventoryArray);
+
+	
 	}
+
+	
+	function clickToken(token) {
+		if  ($(".map").has(token).length)  {
+			pickUp(token);
+
+		} else {
+			use(token);
+		}
+	}
+			
+
+	$(".token").click(function() {
+		clickToken(this);
+	})
 
 ///////////////// ROOM CLICK FUNCTIONS /////////////////////
 
@@ -156,28 +174,6 @@ $(document).ready(function () {
 		})
 
 
-//////////////////////////FIX THISSSSSSS/////////////////////////////////////
-
-		// $("#tinyDoll").click(function() {
-
-		// 	var x = document.getElementById("tinyDoll").parentElement.nodeName;
-			
-		// 	if  (x = ".map") {
-		// 		pickUp("#tinyDoll");
-		// 	}
-
-
-		// 	} 
-
-		// 	// else if (".inventory").contains("#tinyDoll") = true {
-		// 	// 	use("#tinyDoll");
-		// 	// }
-
-		// })
-
-
-
-
 
 		$("#secretTwo").click(function() {	
 			$("#glass").detach().appendTo("#library");
@@ -190,6 +186,11 @@ $(document).ready(function () {
 			$("#emptyBook").fadeIn();
 
 		})
+
+
+//////////////////////////FIX THISSSSSSS/////////////////////////////////////
+
+
 
 		
 

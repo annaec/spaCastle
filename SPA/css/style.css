@@ -82,7 +82,7 @@ body {
 }
 
 
-.rooms {
+.room {
      float:left;
      width: 200px;
      height:200px;
@@ -169,7 +169,7 @@ ul {
 
 
 
-.tokens {
+.token {
   margin:1% 2%;
   padding:1%;
   cursor:pointer;
