@@ -73,12 +73,12 @@ $(document).ready(function () {
 	$(currentLocation).addClass("mapArrival");
 
 	//Fade in message
-	$(".dialogueBox").fadeIn(1000);
+	$("#welcome").fadeIn(1000);
 	//Fade in inventory and map
 	$(".inventory").delay(6000).fadeIn(1000);
 	$(".map").delay(6000).fadeIn(1000);
 	//Fade out message
-	$(".dialogueBox").delay(5000).fadeOut(1000);
+	$("#welcome").delay(5000).fadeOut(1000);
 
 
 	$(inventory).fadeIn(1000);
@@ -99,8 +99,6 @@ $(document).ready(function () {
 		clearMap();
 
 		$(room).addClass("mapArrival roomGrow");
-
-		$(".hiddenLink").fadeIn();
 
 		$(".hiddenLink").click(function(){
 			$(this).fadeOut();
@@ -157,7 +155,7 @@ $(document).ready(function () {
 
 ////////////////////////////// LIBRARY /////////////////////////////////
 
-	$("#library").click(function() {
+	$("#begin").click(function() {
 
 		roomSelect("#library");
 		$("#begin").fadeOut();
@@ -169,7 +167,7 @@ $(document).ready(function () {
 			$("#shelfRoom").fadeIn();	
 		})
 
-//////////////////// CONDENSE INTO ONE CLICK FUNCTION /////////////////////////////
+//////////////////// CHOOSING A SECRET /////////////////////////////
 
 		$("#secretOne").click(function() {	
 			pickUp("#secretBookOne");
@@ -197,6 +195,9 @@ $(document).ready(function () {
 		$(".continue").click(function() {
 			$(".insideLibrary").fadeOut();
 			$("#libraryObject").fadeIn();
+			$("#bookshelfDisappears").delay(1000).fadeIn(1000);
+			$("#bookshelfDisappears").delay(20000).fadeOut(1000);
+			$(".hiddenLink").delay(20000).fadeIn(500);
 		})
 
 	})
@@ -240,9 +241,9 @@ $(document).ready(function () {
 });
 
 /////////////// BUGS /////////////////
-// FIX BACK BUTTON
-// GET RID OF BACK BUTTON DURING LIBRARY SEQUENCE
-// NEXT PART OF LIBRARY SEQUENCE: TEXT ABOUT DISAPPEARING BOOKSHELF AND EMPTY BOOK
+//HOW DO WE WRAP TEXT? HOW DO WE MAKE PARAGRAPHS? 
+//WHEN SHOULD BACK BUTTON BE VISIBLE? HOW DO WE STOP PLAYER FROM GOING BACK DURING ANIMATIONS, ETC
+// NEXT PART OF LIBRARY SEQUENCE: TEXT ABOUT DISAPPEARING BOOKSHELF AND EMPTY BOOK: FIX TYPING ANIMATION!!!!!
 // ROOMS WILL HAVE DARKROOM OVERLAY UNTIL THEY ARE UNLOCKED SO OBJECTS DO NOT HAVE TO BE INVISIBLE
 // MAKE SURE YOU CANT PICK UP HIDDEN ITEMS BY ACCIDENT
 // USE SECRET IN INVENTORY TO AFFECT END OF GAME (if secret x in inventory and special token used in certain room, end game)
@@ -253,6 +254,7 @@ $(document).ready(function () {
 // STORE WHICH SECRET PLAYER CHOOSES
 // if you click [secretOne / Two / Three] add to inventory (or player object) and hide it . function clickBook(secret)
 // FLOAT INVENTORY
+// GET RID OF BACK BUTTON DURING LIBRARY SEQUENCE
 
 
 

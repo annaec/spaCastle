@@ -200,9 +200,9 @@ h5 {
 
 .dialogueBox {
      width: 400px;
-     margin:5% auto;
-     padding:5%;
-     clear:both;
+     margin:0 auto;
+     padding:2%;
+     /****clear:both;***/
      height:400px;
      background-color: black; 
      position: absolute;
@@ -210,6 +210,8 @@ h5 {
      left: 0;
      right: 0;
      display:none;
+     z-index:40;
+     overflow-wrap: break-word;
 }
 
 
@@ -222,7 +224,7 @@ h5 {
 .dialogueBox p{
   color: white;
   font-size: 12px;
-  margin: 10px 0 0 10px;
+
   white-space: nowrap; /* keeps content on a single line */
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   width: 30em;
@@ -233,6 +235,12 @@ h5 {
   animation: type2 5s steps(60, end);
 }
 
+.dialogueBox p:nth-child(3){
+  animation: type2 8s steps(60, end);
+}
+.dialogueBox p:nth-child(4){
+  animation: type2 16s steps(100, end);
+}
 /* blinking cursor */
 .dialogueBox span{
   animation: blink .8s infinite;
