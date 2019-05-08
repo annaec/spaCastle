@@ -72,13 +72,13 @@ var currentLocation = $("#library");
 $(document).ready(function () {
 	$(currentLocation).addClass("mapArrival");
 
-	// //Fade in message
-	// $(".dialogueBox").fadeIn(1000);
-	// //Fade in inventory and map
-	// $(".inventory").delay(6000).fadeIn(1000);
-	// $(".map").delay(6000).fadeIn(1000);
-	// //Fade out message
-	// $(".dialogueBox").delay(5000).fadeOut(1000);
+	//Fade in message
+	$(".dialogueBox").fadeIn(1000);
+	//Fade in inventory and map
+	$(".inventory").delay(6000).fadeIn(1000);
+	$(".map").delay(6000).fadeIn(1000);
+	//Fade out message
+	$(".dialogueBox").delay(5000).fadeOut(1000);
 
 
 	$(inventory).fadeIn(1000);
