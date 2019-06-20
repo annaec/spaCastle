@@ -78,24 +78,44 @@ $(document).ready(function () {
 
 	//Fade in message
 	$("#welcome").fadeIn(1000);
+	
+	// function type(message) {
+	// 	var str = $(message).html(),
+	// 	  i = 0,
+	// 	  isTag,
+	// 	  text;       
+	// 	  text = str.slice(0, ++i);
+	// 	  if (text === str) return;
+	// 	  $(message).html(text);
+	// 	  var char = text.slice(-1);
+	// 	  if (char === '<') isTag = true;
+	// 	  if (char === '>') isTag = false;
+	// 	  if (isTag) return type();
+	// 	  setTimeout(type, 80);
+	// 	}
+ 			// type("#welcome");
 
 
-
-		/// WELCOME TYPEWRITER ANIMATION: https://jsfiddle.net/victor_007/4jy6xjr9/ 
-		var str = $('welcome').html(),
+		// WELCOME ANIMATION: https://jsfiddle.net/victor_007/4jy6xjr9/ 
+		var str = $('#welcome').html(),
 		  i = 0,
 		  isTag,
 		  text;       
 		(function type() {
 		  text = str.slice(0, ++i);
 		  if (text === str) return;
-		  $('#welcome').html(text);
+		  $("#welcome").html(text);
 		  var char = text.slice(-1);
 		  if (char === '<') isTag = true;
 		  if (char === '>') isTag = false;
 		  if (isTag) return type();
 		  setTimeout(type, 80);
 		}());
+
+	
+		 
+////////welcome dialogue
+	
 
 	//Fade in inventory and map
 	$(".inventory").delay(6000).fadeIn(1000);
@@ -109,6 +129,7 @@ $(document).ready(function () {
 	
 
 ///////////////// ROOM GENERAL FUNCTIONS /////////////////////
+
 
 
 	function clearMap() {
@@ -289,6 +310,7 @@ $(document).ready(function () {
 });
 
 /////////////// BUGS /////////////////
+// LEARN OBJECT ORIENTED PROGRAMMING LOL
 // HOW TO PUT TYPE FUNCTION INTO A VARIABLE TO REUSE 
 // WHEN SHOULD BACK BUTTON BE VISIBLE? HOW DO WE STOP PLAYER FROM GOING BACK DURING ANIMATIONS, ETC
 // ROOMS WILL HAVE DARKROOM OVERLAY UNTIL THEY ARE UNLOCKED SO OBJECTS DO NOT HAVE TO BE INVISIBLE
