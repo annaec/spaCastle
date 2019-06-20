@@ -112,8 +112,72 @@ $(document).ready(function () {
 		  setTimeout(type, 80);
 		}());
 
-	
-		 
+/////// ROOM OBJECTS /////////
+
+var player = {
+
+};
+
+var library = {
+
+};
+
+var rainRoom = {
+	keys: [ $("#seed"), $("#tinyDoll") ],
+	tokens: [ $("#water"), $("#worm") ],
+	location: $("#rain")
+
+};
+
+var mirrorsRoom = {
+	keys: [ $("#radio"), $("#frame") ],
+	tokens: [ $("#glass"), $("#tinyDoll") ],
+	location: $("#mirrors")
+
+};		 
+
+var handsRoom = {
+	keys: [ $("#ring"), $("#tinyDoll") ],
+	tokens: [ $("#candle"), $("#knife") ],
+	location: $("#hands")
+
+};
+
+var stairsRoom = {
+	keys: [ $("#candle"), $("#glass") ],
+	tokens: $("#frame"),
+	location: $("#stairs")
+
+};
+
+var breadRoom = {
+	keys: [ $("#knife"), $("#water") ],
+	tokens: $("#bread"),
+	location: $("#bread")
+
+};
+
+var mouthsRoom = {
+	keys: [ $("#bread"), $("#glass") ],
+	tokens: [ $("#tooth"), $("#radio") ],
+	location: $("#mouths")
+
+};
+
+var jewelsRoom = {
+	keys: [ $("#tooth"), $("#worm") ],
+	tokens: [ $("#ring"), $("#ruby") ],
+	location: $("#jewels")
+
+};
+
+var flowersRoom = {
+	keys: [ $("#ruby"), $("#tooth") ],
+	tokens: [ $("#seed"),
+	location: $("#flowers")
+
+};
+
 ////////welcome dialogue
 	
 
@@ -143,10 +207,22 @@ $(document).ready(function () {
 		clearMap();
 
 		$(room).addClass("mapArrival roomGrow");
+		$(".hiddenLink").fadeIn();
 
 		$(".hiddenLink").click(function(){
 			$(this).fadeOut();
 			$(room).addClass("roomShrink").removeClass("roomGrow");
+		});	
+	}
+
+	function librarySelect(room) {
+		clearMap();
+
+		$(room).addClass("mapArrival");
+		$(".hiddenLink").fadeIn();
+
+		$(".hiddenLink").click(function(){
+			$(this).fadeOut();
 		});	
 	}
 
@@ -262,13 +338,17 @@ $(document).ready(function () {
 				  if (char === '<') isTag = true;
 				  if (char === '>') isTag = false;
 				  if (isTag) return type();
-				  setTimeout(type, 80);
+				  setTimeout(type, 60);
 				}());
 
-			$("#bookshelfDisappears").delay(20000).fadeOut(1000);
+			$("#bookshelfDisappears").delay(600).fadeOut(600);
 			$(".hiddenLink").delay(20000).fadeIn(500);
 		})
 
+	})
+
+	$("#library").click(function() {
+		librarySelect("#library");
 	})
 
 	$("#stairs").click(function() {
@@ -303,6 +383,11 @@ $(document).ready(function () {
 		roomSelect("#hands");
 	})
 
+// SCENARIO ONE: INVENTORY INCLUDES BOOK 1 AND TINY DOLL
+
+// SCENARIO TWO: INVENTORY INCLUDES BOOK 2 AND GLASS
+
+// SCENARIO THREE: INVENTORY INCLUDES BOOK 3 AND WATER
 
 
 
@@ -310,12 +395,17 @@ $(document).ready(function () {
 });
 
 /////////////// BUGS /////////////////
-// LEARN OBJECT ORIENTED PROGRAMMING LOL
+// LEARN OBJECT ORIENTED PROGRAMMING LOL: 
+// -how to point to existing html elements in JS objects
+// -how to consolidate existing code into objects section 
+// -figure out how to attach functions to objects 
+// -figure out how to trigger token events in each room
+// -USE SECRET IN INVENTORY TO AFFECT END OF GAME (if secret x in inventory and special token used in certain room, end game)
 // HOW TO PUT TYPE FUNCTION INTO A VARIABLE TO REUSE 
-// WHEN SHOULD BACK BUTTON BE VISIBLE? HOW DO WE STOP PLAYER FROM GOING BACK DURING ANIMATIONS, ETC
 // ROOMS WILL HAVE DARKROOM OVERLAY UNTIL THEY ARE UNLOCKED SO OBJECTS DO NOT HAVE TO BE INVISIBLE
+// MAKE SURE PLAYER CAN ONLY CLICK ONE OBJECT IN ROOM AT A TIME
 // MAKE SURE YOU CANT PICK UP HIDDEN ITEMS BY ACCIDENT
-// USE SECRET IN INVENTORY TO AFFECT END OF GAME (if secret x in inventory and special token used in certain room, end game)
+
 
 /////////// ACCOMPLISHMENTS /////////////
 // PICK UP OBJECTS IN LIBRARY
@@ -324,9 +414,9 @@ $(document).ready(function () {
 // if you click [secretOne / Two / Three] add to inventory (or player object) and hide it . function clickBook(secret)
 // FLOAT INVENTORY
 // GET RID OF BACK BUTTON DURING LIBRARY SEQUENCE
-//HOW DO WE WRAP TEXT? HOW DO WE MAKE PARAGRAPHS? 
+// HOW DO WE WRAP TEXT? HOW DO WE MAKE PARAGRAPHS? 
 // NEXT PART OF LIBRARY SEQUENCE: TEXT ABOUT DISAPPEARING BOOKSHELF AND EMPTY BOOK: FIX TYPING ANIMATION!!!!!
-
+// WHEN SHOULD BACK BUTTON BE VISIBLE? HOW DO WE STOP PLAYER FROM GOING BACK DURING ANIMATIONS, ETC
 
 
 
