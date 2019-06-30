@@ -1,100 +1,53 @@
-// Game opens in map view, player icon is in library
-// Click begin button to open library screen
 
 
+///////////////////////////////////////////////DOM ELEMENT VARIABLES////////////////////////////////////////
 
-//var hasBeenClicked = false;
-//jQuery('#id').click(function () {
- //   hasBeenClicked = true;
-//});
-
-//if (hasBeenClicked) {
-    // The link has been clicked.
-//} else {
-    // The link has not been clicked.
-//}
-
-
-/////////////////INVENTORY FUNCTION//////////////////////
-
-// function updateInventory() {
-// 	$(".inventory li").remove();
-// 		newPlayer.inventory.forEach( function (el) {
-// 			$(".inventory").append("<li>" + el + "</li>");
-// 		});
-// }
-
-/////////////////PICK UP FUNCTION//////////////////////
-
-// function pickUpSword() {
-// 	if (currentLocation == "s_gate") {
-// 			// newPlayer.inventory.push("Sword");
-// 			newPlayer.inventory.push("Sword")
-// 			updateInventory();
-// 			$("<p>You picked up the sword. The weight of it feels powerful, and you are emboldened to explore the world around you. Move NORTH, SOUTH, EAST, or WEST.</p>").insertBefore("#placeholder").fadeIn(1000);
-// 		} else {
-// 			$("<p>The sword is not here. Proceed to the South Gate to find the sword, or continue to explore.</p>").insertBefore("#placeholder");
-// 		}
-// }
-
-
-/////////////////REMOVE FROM INVENTORY ARRAY FUNCTION//////////////////////
-  //       function removeItem(array, item) {
-		//     for(var i in array) {
-		//         if(array[i]==item){
-		//             array.splice(i,1);
-
-		//             break;
-  //           	}
-  //   		}
-		// }
-
-/////////////////USE OBJECT FUNCTION//////////////////////
-
-// function useSword() {
-// 	removeItem(newPlayer.inventory, "Sword");
-// 	updateInventory();
-// 	console.log(newPlayer.inventory);
-// 	$("<p>You wield your sword against your enemy. The blade strikes him and he slows, but does not die. Run!</p>").insertBefore("#placeholder").fadeIn(1000);
-// }
-
-
-
-// store last page clicked in a variable
-var inventoryArray = [];
 var inventory = $(".inventory")
 var token = $(".token"); 
 
+////////////////////////////////////////////////RASPBERRYHEAD////////////////////////////////////////////////
+
+function Player(inventoryArray, currentLocation, hearts) {
+	this.inventoryArray=inventoryArray,
+	this.currentLocation=currentLocation,
+	this.hearts=hearts;
+}
+
+var player = new Player([], $("#library"), 6);
+
+/////////////////////////////////////////////////ROOM OBJECTS //////////////////////////////////////////////////////
 
 
-var currentLocation = $("#library");
+function Room(keys, tokens, location) {
+	this.keys=keys,
+	this.tokens=tokens,
+	this.location=location;
+}
 
+var rainRoom = new Room( [$("#seed"), $("#tinyDoll")], [$("#water"), $("#worm")], $("#rain"));
 
+var mirrorsRoom = new Room( [$("#radio"), $("#frame")], [$("#glass"), $("#tinyDoll")], $("#mirrors"));
 
+var handsRoom = new Room( [$("#ring"), $("#tinyDoll")], [$("#candle"), $("#knife")], $("#hands"));
+
+var stairsRoom = new Room( [$("#candle"), $("#glass")], $("#frame"), $("#stairs"));
+
+var breadRoom = new Room( [$("#knife"), $("#water")], $("#bread"), $("#bread"));
+
+var mouthsRoom = new Room( [$("#bread"), $("#glass")], [$("#tooth"), $("#radio")], $("#mouths"));
+
+var jewelsRoom = new Room( [$("#tooth"), $("#worm")], [$("#ring"), $("#ruby")], $("#jewels"));
+
+var flowersRoom = new Room( [$("#ruby"), $("#tooth")], $("#seed"), $("#flowers"));
+
+////////////////////////////////////////////////////////OPENING///////////////////////////////////////////////
 
 
 $(document).ready(function () {
-	$(currentLocation).addClass("mapArrival");
+	$(player.currentLocation).addClass("mapArrival");
 
 	//Fade in message
 	$("#welcome").fadeIn(1000);
-	
-	// function type(message) {
-	// 	var str = $(message).html(),
-	// 	  i = 0,
-	// 	  isTag,
-	// 	  text;       
-	// 	  text = str.slice(0, ++i);
-	// 	  if (text === str) return;
-	// 	  $(message).html(text);
-	// 	  var char = text.slice(-1);
-	// 	  if (char === '<') isTag = true;
-	// 	  if (char === '>') isTag = false;
-	// 	  if (isTag) return type();
-	// 	  setTimeout(type, 80);
-	// 	}
- 			// type("#welcome");
-
 
 		// WELCOME ANIMATION: https://jsfiddle.net/victor_007/4jy6xjr9/ 
 		var str = $('#welcome').html(),
@@ -111,77 +64,9 @@ $(document).ready(function () {
 		  if (isTag) return type();
 		  setTimeout(type, 80);
 		}());
-
-/////// ROOM OBJECTS /////////
-
-var player = {
-
-};
-
-var library = {
-
-};
-
-var rainRoom = {
-	keys: [ $("#seed"), $("#tinyDoll") ],
-	tokens: [ $("#water"), $("#worm") ],
-	location: $("#rain")
-
-};
-
-var mirrorsRoom = {
-	keys: [ $("#radio"), $("#frame") ],
-	tokens: [ $("#glass"), $("#tinyDoll") ],
-	location: $("#mirrors")
-
-};		 
-
-var handsRoom = {
-	keys: [ $("#ring"), $("#tinyDoll") ],
-	tokens: [ $("#candle"), $("#knife") ],
-	location: $("#hands")
-
-};
-
-var stairsRoom = {
-	keys: [ $("#candle"), $("#glass") ],
-	tokens: $("#frame"),
-	location: $("#stairs")
-
-};
-
-var breadRoom = {
-	keys: [ $("#knife"), $("#water") ],
-	tokens: $("#bread"),
-	location: $("#bread")
-
-};
-
-var mouthsRoom = {
-	keys: [ $("#bread"), $("#glass") ],
-	tokens: [ $("#tooth"), $("#radio") ],
-	location: $("#mouths")
-
-};
-
-var jewelsRoom = {
-	keys: [ $("#tooth"), $("#worm") ],
-	tokens: [ $("#ring"), $("#ruby") ],
-	location: $("#jewels")
-
-};
-
-var flowersRoom = {
-	keys: [ $("#ruby"), $("#tooth") ],
-	tokens: [ $("#seed"),
-	location: $("#flowers")
-
-};
-
-////////welcome dialogue
 	
+/////////////////////////////////////////////FADE IN INVENTORY AND MAP////////////////////////////////////////////
 
-	//Fade in inventory and map
 	$(".inventory").delay(6000).fadeIn(1000);
 	$(".map").delay(6000).fadeIn(1000);
 	//Fade out message
@@ -192,16 +77,11 @@ var flowersRoom = {
 	$(".map").fadeIn(1000);
 	
 
-///////////////// ROOM GENERAL FUNCTIONS /////////////////////
-
-
+////////////////////////////////////////////////ROOM GENERAL FUNCTIONS /////////////////////////////////////////////
 
 	function clearMap() {
 		$(".room").removeClass("mapArrival roomShrink");
-	}
-
-		
-
+	}	
 
 	function roomSelect(room) {
 		clearMap();
@@ -227,15 +107,13 @@ var flowersRoom = {
 	}
 
 
-
-
-//////// PICK UP ITEM AND ADD TO INVENTORY
+/////////////////////////////////////////PICK UP ITEM AND ADD TO INVENTORY/////////////////////////////////////////
 
 
 	function pickUp(token) {
-		inventoryArray.push(token);
+		player.inventoryArray.push(token);
 		$(token).detach().appendTo(".inventory");
-		console.log(inventoryArray);
+		console.log(player.inventoryArray);
 	}
 
  	function removeItem(array, token) {
@@ -249,14 +127,11 @@ var flowersRoom = {
 
 
 	function use(token) {
-		removeItem(inventoryArray, token);
+		removeItem(player.inventoryArray, token);
 			$(token).detach();
-		console.log(inventoryArray);
-
-	
+		console.log(player.inventoryArray);	
 	}
 
-	
 	function clickToken(token) {
 		if  ($(".map").has(token).length)  {
 			pickUp(token);
@@ -266,17 +141,14 @@ var flowersRoom = {
 		}
 	}
 			
-
 	$(".token").click(function() {
 		clickToken(this);
 	})
 
 
-			
+//////////////////////////////////////////////////ROOM CLICK FUNCTIONS /////////////////////////////////////////////
 
-///////////////// ROOM CLICK FUNCTIONS /////////////////////
-
-////////////////////////////// LIBRARY /////////////////////////////////
+////////////////////////////////////////////////////LIBRARY ///////////////////////////////////////////////////////
 
 	$("#begin").click(function() {
 
@@ -291,17 +163,12 @@ var flowersRoom = {
 		})
 
 
-		/////
-
-
-
-//////////////////// CHOOSING A SECRET /////////////////////////////
+////////////////////////////////////////////////////CHOOSING A SECRET //////////////////////////////////////////////
 
 		$("#secretOne").click(function() {	
 			pickUp("#secretBookOne");
 			$("#tinyDoll").detach().appendTo("#library");			
 			$("#emptyBook, #secretBookOne").fadeIn();
-
 		})
 
 
@@ -309,14 +176,12 @@ var flowersRoom = {
 			pickUp("#secretBookTwo");
 			$("#glass").detach().appendTo("#library");
 			$("#emptyBook, #secretBookTwo").fadeIn();
-
 		})
 
 		$("#secretThree").click(function() {
 			pickUp("#secretBookThree");	
 			$("#water").detach().appendTo("#library");
 			$("#emptyBook, #secretBookThree").fadeIn();
-
 		})
 
 
@@ -344,7 +209,6 @@ var flowersRoom = {
 			$("#bookshelfDisappears").delay(600).fadeOut(600);
 			$(".hiddenLink").delay(20000).fadeIn(500);
 		})
-
 	})
 
 	$("#library").click(function() {
@@ -395,9 +259,6 @@ var flowersRoom = {
 });
 
 /////////////// BUGS /////////////////
-// LEARN OBJECT ORIENTED PROGRAMMING LOL: 
-// -how to point to existing html elements in JS objects
-// -how to consolidate existing code into objects section 
 // -figure out how to attach functions to objects 
 // -figure out how to trigger token events in each room
 // -USE SECRET IN INVENTORY TO AFFECT END OF GAME (if secret x in inventory and special token used in certain room, end game)
@@ -408,6 +269,9 @@ var flowersRoom = {
 
 
 /////////// ACCOMPLISHMENTS /////////////
+// LEARN OBJECT ORIENTED PROGRAMMING LOL: 
+// -how to point to existing html elements in JS objects
+// -how to consolidate existing code into objects section 
 // PICK UP OBJECTS IN LIBRARY
 // HOW TO ADD THINGS TO INVENTORY
 // STORE WHICH SECRET PLAYER CHOOSES
