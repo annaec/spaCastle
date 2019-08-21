@@ -1,9 +1,9 @@
 
 
-///////////////////////////////////////////////DOM ELEMENT VARIABLES////////////////////////////////////////
+///////////////////////////////////////////////DOM ELEMENT letIABLES////////////////////////////////////////
 
-var inventory = $(".inventory")
-var token = $(".token"); 
+let inventory = $(".inventory")
+let token = $(".token"); 
 
 ////////////////////////////////////////////////RASPBERRYHEAD////////////////////////////////////////////////
 
@@ -13,32 +13,58 @@ function Player(inventoryArray, currentLocation, hearts) {
 	this.hearts=hearts;
 }
 
-var player = new Player([], $("#library"), 6);
+let player = new Player([], $("#library"), 6);
 
 /////////////////////////////////////////////////ROOM OBJECTS //////////////////////////////////////////////////////
 
-
-function Room(keys, tokens, location) {
+function Room(keys, tokens, location, cantGo) {
 	this.keys=keys,
 	this.tokens=tokens,
 	this.location=location;
+	this.cantGo=cantGo;
+	//if you're in this room and you click on anything inside of the cantGo value of this object, then dont fire the click function, do the cantGo function
 }
 
-var rainRoom = new Room( [$("#seed"), $("#tinyDoll")], [$("#water"), $("#worm")], $("#rain"));
+function cantGo(roomClicked) {
+		//if currentLocation is not in the cantGo array of roomClicked ie rainRoom.cantGo
+		// if (Room.cantGo.includes(roomClicked)) {
+		// 	console.log("error");
+		// }
 
-var mirrorsRoom = new Room( [$("#radio"), $("#frame")], [$("#glass"), $("#tinyDoll")], $("#mirrors"));
+		if (rainRoom.cantGo.includes(roomClicked)) {
+			console.log("error");
 
-var handsRoom = new Room( [$("#ring"), $("#tinyDoll")], [$("#candle"), $("#knife")], $("#hands"));
+		}
 
-var stairsRoom = new Room( [$("#candle"), $("#glass")], $("#frame"), $("#stairs"));
+		if (!$(roomClicked).hasClass("beenHere")) {
+			console.log("notBeenHere");
+			console.log(rainRoom.cantGo);
 
-var breadRoom = new Room( [$("#knife"), $("#water")], $("#bread"), $("#bread"));
+		}
+			// if (player.inventoryArray.includes(Room.keys)) {
+			// 	//can go in
+			// } else {
+				
+			// }
+	}
 
-var mouthsRoom = new Room( [$("#bread"), $("#glass")], [$("#tooth"), $("#radio")], $("#mouths"));
 
-var jewelsRoom = new Room( [$("#tooth"), $("#worm")], [$("#ring"), $("#ruby")], $("#jewels"));
 
-var flowersRoom = new Room( [$("#ruby"), $("#tooth")], $("#seed"), $("#flowers"));
+let rainRoom = new Room( [$("#seed"), $("#tinyDoll")], [$("#water"), $("#worm")], $("#rain"), [$("#stairs"), $("#bread"), $("#flowers"), $("#jewels"), $("#mouths")]);
+
+let mirrorsRoom = new Room( [$("#radio"), $("#frame")], [$("#glass"), $("#tinyDoll")], $("#mirrors"));
+
+let handsRoom = new Room( [$("#ring"), $("#tinyDoll")], [$("#candle"), $("#knife")], $("#hands"));
+
+let stairsRoom = new Room( [$("#candle"), $("#glass")], $("#frame"), $("#stairs"));
+
+let breadRoom = new Room( [$("#knife"), $("#water")], $("#bread"), $("#bread"));
+
+let mouthsRoom = new Room( [$("#bread"), $("#glass")], [$("#tooth"), $("#radio")], $("#mouths"));
+
+let jewelsRoom = new Room( [$("#tooth"), $("#worm")], [$("#ring"), $("#ruby")], $("#jewels"));
+
+let flowersRoom = new Room( [$("#ruby"), $("#tooth")], $("#seed"), $("#flowers"));
 
 ////////////////////////////////////////////////////////OPENING///////////////////////////////////////////////
 
@@ -50,7 +76,7 @@ $(document).ready(function () {
 	$("#welcome").fadeIn(1000);
 
 		// WELCOME ANIMATION: https://jsfiddle.net/victor_007/4jy6xjr9/ 
-		var str = $('#welcome').html(),
+		let str = $('#welcome').html(),
 		  i = 0,
 		  isTag,
 		  text;       
@@ -58,7 +84,7 @@ $(document).ready(function () {
 		  text = str.slice(0, ++i);
 		  if (text === str) return;
 		  $("#welcome").html(text);
-		  var char = text.slice(-1);
+		  let char = text.slice(-1);
 		  if (char === '<') isTag = true;
 		  if (char === '>') isTag = false;
 		  if (isTag) return type();
@@ -84,14 +110,22 @@ $(document).ready(function () {
 	}	
 
 	function roomSelect(room) {
+
+		// when you click on a room, addClass beenHere. this function will check if hasClass beenHere
+		// if it doesn't have the class beenHere, it will check for the keys
+
 		clearMap();
+
+		
+		cantGo(room);
+
 
 		$(room).addClass("mapArrival roomGrow");
 		$(".hiddenLink").fadeIn();
 
 		$(".hiddenLink").click(function(){
 			$(this).fadeOut();
-			$(room).addClass("roomShrink").removeClass("roomGrow");
+			$(room).addClass("roomShrink beenHere").removeClass("roomGrow");
 		});	
 	}
 
@@ -117,7 +151,7 @@ $(document).ready(function () {
 	}
 
  	function removeItem(array, token) {
-		    for(var i in array) {
+		    for(let i in array) {
 		        if(array[i]===token){
 		            array.splice(i,1);
 		            break;
@@ -191,7 +225,7 @@ $(document).ready(function () {
 			$("#bookshelfDisappears").delay(1000).fadeIn(1000);
 
 				/// BOOKSHELF TYPEWRITER ANIMATION: https://jsfiddle.net/victor_007/4jy6xjr9/ 
-				var str = $('#bookshelfDisappears').html(),
+				let str = $('#bookshelfDisappears').html(),
 				  i = 0,
 				  isTag,
 				  text;       
@@ -199,7 +233,7 @@ $(document).ready(function () {
 				  text = str.slice(0, ++i);
 				  if (text === str) return;
 				  $('#bookshelfDisappears').html(text);
-				  var char = text.slice(-1);
+				  let char = text.slice(-1);
 				  if (char === '<') isTag = true;
 				  if (char === '>') isTag = false;
 				  if (isTag) return type();
@@ -258,17 +292,21 @@ $(document).ready(function () {
 // end document ready
 });
 
+/// if you're in library and you click on corner rooms, an error message pops up. else roomSelect function fires
+
 /////////////// BUGS /////////////////
+// FIGURE OUT HOW TO ACCESS ROOM OBJECT ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
 // -figure out how to attach functions to objects 
 // -figure out how to trigger token events in each room
 // -USE SECRET IN INVENTORY TO AFFECT END OF GAME (if secret x in inventory and special token used in certain room, end game)
-// HOW TO PUT TYPE FUNCTION INTO A VARIABLE TO REUSE 
+// HOW TO PUT TYPE FUNCTION INTO A letIABLE TO REUSE 
 // ROOMS WILL HAVE DARKROOM OVERLAY UNTIL THEY ARE UNLOCKED SO OBJECTS DO NOT HAVE TO BE INVISIBLE
 // MAKE SURE PLAYER CAN ONLY CLICK ONE OBJECT IN ROOM AT A TIME
 // MAKE SURE YOU CANT PICK UP HIDDEN ITEMS BY ACCIDENT
 
 
 /////////// ACCOMPLISHMENTS /////////////
+// WHY DOES BEENHERE CLASS ONLY GET ADDED AFTER YOU'VE CLICKED LIBRARY
 // LEARN OBJECT ORIENTED PROGRAMMING LOL: 
 // -how to point to existing html elements in JS objects
 // -how to consolidate existing code into objects section 
