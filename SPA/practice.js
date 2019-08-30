@@ -31,14 +31,17 @@ function cantGo(roomClicked) {
 		// 	console.log("error");
 		// }
 
-		if (rainRoom.cantGo.includes(roomClicked)) {
-			console.log("error");
+		// if ($(rainRoom.cantGo).includes($("#jewels"))) {
+		// 	console.log("error");
 
-		}
+		// }
 
-		if (!$(roomClicked).hasClass("beenHere")) {
-			console.log("notBeenHere");
-			console.log(rainRoom.cantGo);
+		if (!$(roomClicked).hasClass("beenHere")) {	
+				console.log("notBeenHere");
+				console.log($(rainRoom.cantGo));
+			} else {
+				console.log("beenHere");
+			}
 
 		}
 			// if (player.inventoryArray.includes(Room.keys)) {
@@ -46,7 +49,7 @@ function cantGo(roomClicked) {
 			// } else {
 				
 			// }
-	}
+	
 
 
 
@@ -111,22 +114,28 @@ $(document).ready(function () {
 
 	function roomSelect(room) {
 
-		// when you click on a room, addClass beenHere. this function will check if hasClass beenHere
-		// if it doesn't have the class beenHere, it will check for the keys
-
 		clearMap();
 
-		
-		cantGo(room);
+		// REASSIGN PLAYER.CURRENTLOCATION TO ROOM CLICKED AT END OF ROOMSELECT FUNCTION
+		// FINISH ROOMSELECT FUNCTION WITH THREE IF STATEMENTS IN EXACT ORDER
+		let  currentRoom = $(player.currentLocation);
+		console.log(currentRoom);
 
-
+		// when you click on a room, addClass beenHere. this function will check if hasClass beenHere
+		// if it doesn't have the class beenHere, it will check for the keys
+        
+        //makes room you clicked blue and makes it grow 
 		$(room).addClass("mapArrival roomGrow");
 		$(".hiddenLink").fadeIn();
-
+        
+        //for clicking the back button
 		$(".hiddenLink").click(function(){
 			$(this).fadeOut();
 			$(room).addClass("roomShrink beenHere").removeClass("roomGrow");
 		});	
+
+		//function that will happen if you arent allowed to go in a room, will be moved up
+		cantGo(room);
 	}
 
 	function librarySelect(room) {
@@ -295,6 +304,8 @@ $(document).ready(function () {
 /// if you're in library and you click on corner rooms, an error message pops up. else roomSelect function fires
 
 /////////////// BUGS /////////////////
+// REASSIGN PLAYER.CURRENTLOCATION TO ROOM CLICKED AT END OF ROOMSELECT FUNCTION
+// FINISH ROOMSELECT FUNCTION WITH THREE IF STATEMENTS IN EXACT ORDER (ANAHIT'S DIAGRAM)
 // FIGURE OUT HOW TO ACCESS ROOM OBJECT ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
 // -figure out how to attach functions to objects 
 // -figure out how to trigger token events in each room
@@ -306,6 +317,8 @@ $(document).ready(function () {
 
 
 /////////// ACCOMPLISHMENTS /////////////
+// BEENHERE SYNTAX AND CHECKING WHETHER YOUVE BEEN IN A ROOM
+// NOT OPERATOR :]
 // WHY DOES BEENHERE CLASS ONLY GET ADDED AFTER YOU'VE CLICKED LIBRARY
 // LEARN OBJECT ORIENTED PROGRAMMING LOL: 
 // -how to point to existing html elements in JS objects
