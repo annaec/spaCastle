@@ -1,3 +1,35 @@
+/*
+function Room(keys, tokens, location, cantGo) {
+	this.keys=keys,
+	this.tokens=tokens,
+	this.location=location,
+	this.cantGo=cantGo;
+	//if you're in this room and you click on anything inside of the cantGo value of this object, then dont fire the click function, do the cantGo function
+}
+
+let rainRoom = new Room( [$("#seed"), $("#tinyDoll")], [$("#water"), $("#worm")], $("#rain"), [$("#stairs"), $("#bread"), $("#flowers"), $("#jewels"), $("#mouths")]);
+
+let mirrorsRoom = new Room( [$("#radio"), $("#frame")], [$("#glass"), $("#tinyDoll")], $("#mirrors"), [$("#stairs"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]);
+
+let handsRoom = new Room( [$("#ring"), $("#tinyDoll")], [$("#candle"), $("#knife")], $("#hands"), [$("#stairs"), $("#bread"), $("#flowers"), $("#jewels"), $("#mirrors")]);
+
+let stairsRoom = new Room( [$("#candle"), $("#glass")], $("#frame"), $("#stairs"), [$("#rain"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]);
+
+let breadRoom = new Room( [$("#knife"), $("#water")], $("#bread"), $("#bread"), [$("#hands"), $("#bread"), $("#mirrors"), $("#jewels"), $("#mouths")]);
+
+let mouthsRoom = new Room( [$("#bread"), $("#glass")], [$("#tooth"), $("#radio")], $("#mouths"), [$("#stairs"), $("#bread"), $("#rain"), $("#jewels"), $("#mirrors")]);
+
+let jewelsRoom = new Room( [$("#tooth"), $("#worm")], [$("#ring"), $("#ruby")], $("#jewels"), [$("#rain"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]);
+
+let flowersRoom = new Room( [$("#ruby"), $("#tooth")], $("#seed"), $("#flowers"), [$("#stairs"), $("#mirrors"), $("#rain"), $("#jewels"), $("#hands")]);
+
+
+
+
+
+
+
+
 // Game opens in map view, player icon is in library
 // Click begin button to open library screen
 

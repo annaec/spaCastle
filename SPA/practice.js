@@ -17,57 +17,49 @@ let player = new Player([], $("#library"), 6);
 
 /////////////////////////////////////////////////ROOM OBJECTS //////////////////////////////////////////////////////
 
-function Room(keys, tokens, location, cantGo) {
-	this.keys=keys,
-	this.tokens=tokens,
-	this.location=location;
-	this.cantGo=cantGo;
-	//if you're in this room and you click on anything inside of the cantGo value of this object, then dont fire the click function, do the cantGo function
-}
+/*let pusheen = {  
+	name: 'Pusheen',  
+	age: 7,  
+	colors: ['gray', 'tabby']
+};
+console.log(pusheen.colors[0]);
+console.log(pusheen.colors[1]);
 
-function cantGo(roomClicked) {
-		//if currentLocation is not in the cantGo array of roomClicked ie rainRoom.cantGo
-		// if (Room.cantGo.includes(roomClicked)) {
-		// 	console.log("error");
-		// }
+var foo = {
+  bar: ['foo', 'bar', 'baz']
+};
 
-		// if ($(rainRoom.cantGo).includes($("#jewels"))) {
-		// 	console.log("error");
+// access
+foo.bar[2]; // will give you 'baz'
 
-		// }
-
-		if (!$(roomClicked).hasClass("beenHere")) {	
-				console.log("notBeenHere");
-				console.log($(rainRoom.cantGo));
-			} else {
-				console.log("beenHere");
-			}
-
-		}
-			// if (player.inventoryArray.includes(Room.keys)) {
-			// 	//can go in
-			// } else {
-				
-			// }
-	
+USE FOR LOOP TO CYCLE THROUGH CANTGO Array AND CHECK IF ROOMCLICKED IS IN IT
+*/
 
 
+let rainRoom =  {
+	keys: [$("#seed"), $("#tinyDoll")], 
+	tokens: [$("#water"), $("#worm")], 
+	location: $("#rain"), 
+	cantGo: [$("#stairs"), $("#bread"), $("#flowers"), $("#jewels"), $("#mouths")]
+};
 
-let rainRoom = new Room( [$("#seed"), $("#tinyDoll")], [$("#water"), $("#worm")], $("#rain"), [$("#stairs"), $("#bread"), $("#flowers"), $("#jewels"), $("#mouths")]);
+/*let mirrorsRoom =  [$("#radio"), $("#frame")], [$("#glass"), $("#tinyDoll")], $("#mirrors"), [$("#stairs"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]);
 
-let mirrorsRoom = new Room( [$("#radio"), $("#frame")], [$("#glass"), $("#tinyDoll")], $("#mirrors"));
+let handsRoom =  [$("#ring"), $("#tinyDoll")], [$("#candle"), $("#knife")], $("#hands"), [$("#stairs"), $("#bread"), $("#flowers"), $("#jewels"), $("#mirrors")]);
 
-let handsRoom = new Room( [$("#ring"), $("#tinyDoll")], [$("#candle"), $("#knife")], $("#hands"));
+let stairsRoom = [$("#candle"), $("#glass")], $("#frame"), $("#stairs"), [$("#rain"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]);
 
-let stairsRoom = new Room( [$("#candle"), $("#glass")], $("#frame"), $("#stairs"));
+let breadRoom = [$("#knife"), $("#water")], $("#bread"), $("#bread"), [$("#hands"), $("#bread"), $("#mirrors"), $("#jewels"), $("#mouths")]);
 
-let breadRoom = new Room( [$("#knife"), $("#water")], $("#bread"), $("#bread"));
+let mouthsRoom = [$("#bread"), $("#glass")], [$("#tooth"), $("#radio")], $("#mouths"), [$("#stairs"), $("#bread"), $("#rain"), $("#jewels"), $("#mirrors")]);
 
-let mouthsRoom = new Room( [$("#bread"), $("#glass")], [$("#tooth"), $("#radio")], $("#mouths"));
+let jewelsRoom = [$("#tooth"), $("#worm")], [$("#ring"), $("#ruby")], $("#jewels"), [$("#rain"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]);
 
-let jewelsRoom = new Room( [$("#tooth"), $("#worm")], [$("#ring"), $("#ruby")], $("#jewels"));
+let flowersRoom = [$("#ruby"), $("#tooth")], $("#seed"), $("#flowers"), [$("#stairs"), $("#mirrors"), $("#rain"), $("#jewels"), $("#hands")]);
 
-let flowersRoom = new Room( [$("#ruby"), $("#tooth")], $("#seed"), $("#flowers"));
+*/
+
+
 
 ////////////////////////////////////////////////////////OPENING///////////////////////////////////////////////
 
@@ -112,13 +104,41 @@ $(document).ready(function () {
 		$(".room").removeClass("mapArrival roomShrink");
 	}	
 
+	function cantGo(roomClicked) {
+		//if currentLocation is not in the cantGo array of roomClicked ie rainRoom.cantGo
+		// if (Room.cantGo.includes(roomClicked)) {
+		// 	console.log("error");
+		// }
+
+
+		if (!$(roomClicked).hasClass("beenHere")) {	
+				console.log("notBeenHere");
+				console.log(rainRoom.cantGo);
+
+				
+			} else {
+				console.log("beenHere");
+				
+			}
+
+		// if (rainRoom.cantGo.includes($("#bread"))) {
+		// 	console.log("hello");
+		// }
+
+		}
+
+
 	function roomSelect(room) {
 
 		clearMap();
 
-		// REASSIGN PLAYER.CURRENTLOCATION TO ROOM CLICKED AT END OF ROOMSELECT FUNCTION
+		//function that will happen if you arent allowed to go in a room, will be moved up
+		cantGo(room);
+
+		
 		// FINISH ROOMSELECT FUNCTION WITH THREE IF STATEMENTS IN EXACT ORDER
-		let  currentRoom = $(player.currentLocation);
+		let  currentRoom = player.currentLocation;
+		currentRoom = room;
 		console.log(currentRoom);
 
 		// when you click on a room, addClass beenHere. this function will check if hasClass beenHere
@@ -134,8 +154,7 @@ $(document).ready(function () {
 			$(room).addClass("roomShrink beenHere").removeClass("roomGrow");
 		});	
 
-		//function that will happen if you arent allowed to go in a room, will be moved up
-		cantGo(room);
+		
 	}
 
 	function librarySelect(room) {
@@ -304,7 +323,8 @@ $(document).ready(function () {
 /// if you're in library and you click on corner rooms, an error message pops up. else roomSelect function fires
 
 /////////////// BUGS /////////////////
-// REASSIGN PLAYER.CURRENTLOCATION TO ROOM CLICKED AT END OF ROOMSELECT FUNCTION
+// USE FOR LOOP TO CYCLE THROUGH CANTGO Array AND CHECK IF ROOMCLICKED IS IN IT
+// TRY TO REWRITE ROOM OBJECTS IN THE OTHER WAY
 // FINISH ROOMSELECT FUNCTION WITH THREE IF STATEMENTS IN EXACT ORDER (ANAHIT'S DIAGRAM)
 // FIGURE OUT HOW TO ACCESS ROOM OBJECT ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
 // -figure out how to attach functions to objects 
@@ -317,6 +337,7 @@ $(document).ready(function () {
 
 
 /////////// ACCOMPLISHMENTS /////////////
+// REASSIGN PLAYER.CURRENTLOCATION TO ROOM CLICKED AT END OF ROOMSELECT FUNCTION
 // BEENHERE SYNTAX AND CHECKING WHETHER YOUVE BEEN IN A ROOM
 // NOT OPERATOR :]
 // WHY DOES BEENHERE CLASS ONLY GET ADDED AFTER YOU'VE CLICKED LIBRARY
