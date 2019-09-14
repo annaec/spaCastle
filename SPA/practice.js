@@ -43,23 +43,66 @@ let rainRoom =  {
 	cantGo: [$("#stairs"), $("#bread"), $("#flowers"), $("#jewels"), $("#mouths")]
 };
 
-/*let mirrorsRoom =  [$("#radio"), $("#frame")], [$("#glass"), $("#tinyDoll")], $("#mirrors"), [$("#stairs"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]);
+let handsRoom =  {
+	keys: [$("#ring"), $("#tinyDoll")],
+	tokens: [$("#candle"), $("#knife")],
+	location: $("#hands"),  
+	cantGo: [$("#stairs"), $("#bread"), $("#flowers"), $("#jewels"), $("#mirrors")]
+};
 
-let handsRoom =  [$("#ring"), $("#tinyDoll")], [$("#candle"), $("#knife")], $("#hands"), [$("#stairs"), $("#bread"), $("#flowers"), $("#jewels"), $("#mirrors")]);
+let mirrorsRoom =  {
+	keys: [$("#radio"), $("#frame")],
+	tokens: [$("#glass"), $("#tinyDoll")], 
+	location:  $("#mirrors"),
+	cantGo: [$("#stairs"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]
+};
 
-let stairsRoom = [$("#candle"), $("#glass")], $("#frame"), $("#stairs"), [$("#rain"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]);
+let stairsRoom =  {
+	keys: [$("#candle"), $("#glass")], 
+	tokens: $("#frame"),
+	location: $("#stairs"),
+	cantGo:  [$("#rain"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]
+};
 
-let breadRoom = [$("#knife"), $("#water")], $("#bread"), $("#bread"), [$("#hands"), $("#bread"), $("#mirrors"), $("#jewels"), $("#mouths")]);
+let breadRoom =  {
+	keys: [$("#knife"), $("#water")], 
+	tokens: $("#bread"),
+	location: $("#bread"),
+	cantGo: [$("#rain"), $("#jewels"), $("#mirrors"), $("#hands"), $("#mouths")]
+};
 
-let mouthsRoom = [$("#bread"), $("#glass")], [$("#tooth"), $("#radio")], $("#mouths"), [$("#stairs"), $("#bread"), $("#rain"), $("#jewels"), $("#mirrors")]);
+let mouthsRoom =  {
+	keys: [$("#bread"), $("#glass")],
+	tokens: [$("#tooth"), $("#radio")],
+	location: $("#mouths"),
+	cantGo: [$("#stairs"), $("#bread"), $("#rain"), $("#jewels"), $("#mirrors")]
+};
 
-let jewelsRoom = [$("#tooth"), $("#worm")], [$("#ring"), $("#ruby")], $("#jewels"), [$("#rain"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]);
+let jewelsRoom =  {
+	keys: [$("#tooth"), $("#worm")],
+	tokens: [$("#ring"), $("#ruby")],
+	location: $("#jewels"),
+	cantGo: [$("#rain"), $("#bread"), $("#flowers"), $("#hands"), $("#mouths")]
+};
 
-let flowersRoom = [$("#ruby"), $("#tooth")], $("#seed"), $("#flowers"), [$("#stairs"), $("#mirrors"), $("#rain"), $("#jewels"), $("#hands")]);
+let flowersRoom =  {
+	keys: [$("#ruby"), $("#tooth")],
+	tokens: $("#seed"),
+	location:  $("#flowers"), 
+	cantGo: [$("#stairs"), $("#mirrors"), $("#rain"), $("#jewels"), $("#hands")]
+};
 
-*/
 
+////////////////////////////////////////////////////////CANTGO VARIABLES///////////////////////////////////////////////
 
+let flowersCantGo = Object.values(flowersRoom);
+let jewelsCantGo = Object.values(jewelsRoom);
+let mouthsCantGo = Object.values(mouthsRoom);
+let breadCantGo = Object.values(breadRoom);
+let stairsCantGo = Object.values(stairsRoom);
+let mirrorsCantGo = Object.values(mirrorsRoom);
+let handsCantGo = Object.values(handsRoom);
+let rainCantGo = Object.values(rainRoom);
 
 ////////////////////////////////////////////////////////OPENING///////////////////////////////////////////////
 
@@ -100,30 +143,37 @@ $(document).ready(function () {
 
 ////////////////////////////////////////////////ROOM GENERAL FUNCTIONS /////////////////////////////////////////////
 
+	function geographicalImpossibility(roomWereIn, roomWeClick) {
+
+		if( Object.values(roomWereIn[3]).includes(roomWeClick)) {
+			cantGo();
+		  	console.log('yes');
+		} else {
+			roomSelect();
+		  	console.log('no');
+		  	//lockedDoor
+		  	//check if you've been there, if no check if you have the right key
+		}
+
+	}
+
+	
 	function clearMap() {
 		$(".room").removeClass("mapArrival roomShrink");
 	}	
 
 	function cantGo(roomClicked) {
-		//if currentLocation is not in the cantGo array of roomClicked ie rainRoom.cantGo
-		// if (Room.cantGo.includes(roomClicked)) {
-		// 	console.log("error");
-		// }
+		
 
 
 		if (!$(roomClicked).hasClass("beenHere")) {	
 				console.log("notBeenHere");
-				console.log(rainRoom.cantGo);
 
 				
 			} else {
 				console.log("beenHere");
 				
 			}
-
-		// if (rainRoom.cantGo.includes($("#bread"))) {
-		// 	console.log("hello");
-		// }
 
 		}
 
@@ -141,6 +191,8 @@ $(document).ready(function () {
 		currentRoom = room;
 		console.log(currentRoom);
 
+		
+
 		// when you click on a room, addClass beenHere. this function will check if hasClass beenHere
 		// if it doesn't have the class beenHere, it will check for the keys
         
@@ -153,6 +205,8 @@ $(document).ready(function () {
 			$(this).fadeOut();
 			$(room).addClass("roomShrink beenHere").removeClass("roomGrow");
 		});	
+
+
 
 		
 	}
@@ -323,10 +377,8 @@ $(document).ready(function () {
 /// if you're in library and you click on corner rooms, an error message pops up. else roomSelect function fires
 
 /////////////// BUGS /////////////////
-// USE FOR LOOP TO CYCLE THROUGH CANTGO Array AND CHECK IF ROOMCLICKED IS IN IT
-// TRY TO REWRITE ROOM OBJECTS IN THE OTHER WAY
+// LOCKEDDOOR FUNCTION: ACCESS ROOM OBJECT ROOMKEY ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
 // FINISH ROOMSELECT FUNCTION WITH THREE IF STATEMENTS IN EXACT ORDER (ANAHIT'S DIAGRAM)
-// FIGURE OUT HOW TO ACCESS ROOM OBJECT ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
 // -figure out how to attach functions to objects 
 // -figure out how to trigger token events in each room
 // -USE SECRET IN INVENTORY TO AFFECT END OF GAME (if secret x in inventory and special token used in certain room, end game)
@@ -337,6 +389,9 @@ $(document).ready(function () {
 
 
 /////////// ACCOMPLISHMENTS /////////////
+// FIGURE OUT HOW TO ACCESS ROOM OBJECT ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
+// TRY TO REWRITE ROOM OBJECTS IN THE OTHER WAY
+// USE .INCLUDES TO LOOK THROUGH CANTGO Array AND CHECK IF ROOMCLICKED IS IN IT
 // REASSIGN PLAYER.CURRENTLOCATION TO ROOM CLICKED AT END OF ROOMSELECT FUNCTION
 // BEENHERE SYNTAX AND CHECKING WHETHER YOUVE BEEN IN A ROOM
 // NOT OPERATOR :]
