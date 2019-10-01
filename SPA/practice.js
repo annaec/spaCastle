@@ -14,6 +14,7 @@ function Player(inventoryArray, currentLocation, hearts) {
 }
 
 let player = new Player([], $("#library"), 6);
+let playerInventory = player.inventoryArray;
 
 /////////////////////////////////////////////////ROOM OBJECTS //////////////////////////////////////////////////////
 
@@ -104,10 +105,22 @@ let mirrorsCantGo = Object.values(mirrorsRoom);
 let handsCantGo = Object.values(handsRoom);
 let rainCantGo = Object.values(rainRoom);
 
+////////////////////////////////////////////////////////KEY VARIABLES///////////////////////////////////////////////
+
+let flowersKeys = flowersCantGo[0];
+let jewelsKeys = jewelsCantGo[0];
+let mouthsKeys = mouthsCantGo[0];
+let breadKeys = breadCantGo[0];
+let stairsKeys = stairsCantGo[0];
+let mirrorsKeys = mirrorsCantGo[0];
+let handsKeys = handsCantGo[0];
+let rainKeys = rainCantGo[0];
+
 ////////////////////////////////////////////////////////OPENING///////////////////////////////////////////////
 
 
 $(document).ready(function () {
+
 	$(player.currentLocation).addClass("mapArrival");
 
 	//Fade in message
@@ -142,6 +155,24 @@ $(document).ready(function () {
 	
 
 ////////////////////////////////////////////////ROOM GENERAL FUNCTIONS /////////////////////////////////////////////
+// LOCKEDDOOR FUNCTION: ACCESS ROOM OBJECT ROOMKEY ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
+	function lockedDoor(roomWeClick) {
+
+		if (!$(roomWeClick).hasClass("beenHere")) {	
+				console.log("notBeenHere");
+				roomSelect(roomWeClick);			
+			} else {
+				if (playerInventory.includes(Object.values(roomWeClick[0]))) {
+			      roomSelect(roomWeClick);
+		  	      console.log('unlocked');
+		        } else {
+			      cantGo();
+		  	      console.log('locked');
+				
+			}
+		}
+	}
+
 
 	function geographicalImpossibility(roomWereIn, roomWeClick) {
 
@@ -162,33 +193,24 @@ $(document).ready(function () {
 		$(".room").removeClass("mapArrival roomShrink");
 	}	
 
-	function cantGo(roomClicked) {
-		
-
-
-		if (!$(roomClicked).hasClass("beenHere")) {	
-				console.log("notBeenHere");
-
-				
-			} else {
-				console.log("beenHere");
-				
-			}
+	function cantGo(roomWeClick) {
+		// nothing happens on map and warning says can't go here
+		console.log("can't go");
 
 		}
 
 
-	function roomSelect(room) {
+	function roomSelect(roomWeClick) {
 
 		clearMap();
 
-		//function that will happen if you arent allowed to go in a room, will be moved up
-		cantGo(room);
+		//function that will happen if you arent allowed to go in a room
+		cantGo(roomWeClick);
 
 		
 		// FINISH ROOMSELECT FUNCTION WITH THREE IF STATEMENTS IN EXACT ORDER
 		let  currentRoom = player.currentLocation;
-		currentRoom = room;
+		currentRoom = roomWeClick;
 		console.log(currentRoom);
 
 		
@@ -197,13 +219,13 @@ $(document).ready(function () {
 		// if it doesn't have the class beenHere, it will check for the keys
         
         //makes room you clicked blue and makes it grow 
-		$(room).addClass("mapArrival roomGrow");
+		$(roomWeClick).addClass("mapArrival roomGrow");
 		$(".hiddenLink").fadeIn();
         
         //for clicking the back button
 		$(".hiddenLink").click(function(){
 			$(this).fadeOut();
-			$(room).addClass("roomShrink beenHere").removeClass("roomGrow");
+			$(roomWeClick).addClass("roomShrink beenHere").removeClass("roomGrow");
 		});	
 
 
@@ -211,10 +233,10 @@ $(document).ready(function () {
 		
 	}
 
-	function librarySelect(room) {
+	function librarySelect(roomWeClick) {
 		clearMap();
 
-		$(room).addClass("mapArrival");
+		$(roomWeClick).addClass("mapArrival");
 		$(".hiddenLink").fadeIn();
 
 		$(".hiddenLink").click(function(){
@@ -377,6 +399,7 @@ $(document).ready(function () {
 /// if you're in library and you click on corner rooms, an error message pops up. else roomSelect function fires
 
 /////////////// BUGS /////////////////
+// WHY WHY WHY YY DOESN'T INVENTORY .INCLUDES COMMAND WORK? SHOULD WE TURN THE ARRAYS INTO A STRING?
 // LOCKEDDOOR FUNCTION: ACCESS ROOM OBJECT ROOMKEY ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
 // FINISH ROOMSELECT FUNCTION WITH THREE IF STATEMENTS IN EXACT ORDER (ANAHIT'S DIAGRAM)
 // -figure out how to attach functions to objects 
@@ -389,6 +412,7 @@ $(document).ready(function () {
 
 
 /////////// ACCOMPLISHMENTS /////////////
+// CREATED KEY ARRAYS AND SUCCESSFULLY POINTED TO THEM IN THE CODE WITH VARIABLES
 // FIGURE OUT HOW TO ACCESS ROOM OBJECT ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
 // TRY TO REWRITE ROOM OBJECTS IN THE OTHER WAY
 // USE .INCLUDES TO LOOK THROUGH CANTGO Array AND CHECK IF ROOMCLICKED IS IN IT
