@@ -119,7 +119,7 @@ let rainKeys = rainCantGo[0];
 ////////////////////////////////////////////////////////OPENING///////////////////////////////////////////////
 
 
-$(document).ready(function () {
+//$(document).ready(function () {
 
 	$(player.currentLocation).addClass("mapArrival");
 
@@ -156,85 +156,62 @@ $(document).ready(function () {
 
 ////////////////////////////////////////////////ROOM GENERAL FUNCTIONS /////////////////////////////////////////////
 // LOCKEDDOOR FUNCTION: ACCESS ROOM OBJECT ROOMKEY ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
-	function lockedDoor(roomWeClick) {
-
-		if (!$(roomWeClick).hasClass("beenHere")) {	
-				console.log("notBeenHere");
-				roomSelect(roomWeClick);			
-			} else {
-				if (playerInventory.includes(Object.values(roomWeClick[0]))) {
-			      roomSelect(roomWeClick);
-		  	      console.log('unlocked');
-		        } else {
-			      cantGo();
-		  	      console.log('locked');
-				
-			}
-		}
-	}
-
-
-	function geographicalImpossibility(roomWereIn, roomWeClick) {
-
-		if( Object.values(roomWereIn[3]).includes(roomWeClick)) {
-			cantGo();
-		  	console.log('yes');
-		} else {
-			roomSelect();
-		  	console.log('no');
-		  	//lockedDoor
-		  	//check if you've been there, if no check if you have the right key
-		}
-
-	}
-
-	
 	function clearMap() {
 		$(".room").removeClass("mapArrival roomShrink");
-	}	
+	}
 
 	function cantGo(roomWeClick) {
 		// nothing happens on map and warning says can't go here
 		console.log("can't go");
-
-		}
+	}
 
 
 	function roomSelect(roomWeClick) {
+		// clearMap();
 
-		clearMap();
-
-		//function that will happen if you arent allowed to go in a room
-		cantGo(roomWeClick);
-
-		
-		// FINISH ROOMSELECT FUNCTION WITH THREE IF STATEMENTS IN EXACT ORDER
 		let  currentRoom = player.currentLocation;
 		currentRoom = roomWeClick;
 		console.log(currentRoom);
-
-		
-
-		// when you click on a room, addClass beenHere. this function will check if hasClass beenHere
-		// if it doesn't have the class beenHere, it will check for the keys
         
         //makes room you clicked blue and makes it grow 
 		$(roomWeClick).addClass("mapArrival roomGrow");
 		$(".hiddenLink").fadeIn();
         
         //for clicking the back button
-		$(".hiddenLink").click(function(){
+		$(".hiddenLink").click(function() {
 			$(this).fadeOut();
 			$(roomWeClick).addClass("roomShrink beenHere").removeClass("roomGrow");
-		});	
+		});		
+	}
 
+	function haveYouBeenHere(roomWeClick) {
 
+		if (!$(roomWeClick).hasClass("beenHere")) {	
+				console.log("notBeenHere");		
+			} else {
+				console.log("beenHere");
+		}
+	}
 
-		
+	function doYouHaveTheKey(roomWeClick) {
+		if (playerInventory.includes(Object.values(roomWeClick[0]))){
+			console.log("You have the key");
+		} else {
+			console.log("You don't have the key");
+		}
+
+	}
+
+	function geographicalImpossibility(roomWereIn, roomWeClick) {
+
+		if( Object.values(roomWereIn[3]).includes(roomWeClick)) {
+		  	console.log('thisIsNotaGeoImpossibility');
+		} else {
+		  	console.log('thisIsaGeoImpossibility');
+		}
 	}
 
 	function librarySelect(roomWeClick) {
-		clearMap();
 
 		$(roomWeClick).addClass("mapArrival");
 		$(".hiddenLink").fadeIn();
@@ -244,6 +221,16 @@ $(document).ready(function () {
 		});	
 	}
 
+
+function masterClick(roomWeClick){
+	clearMap();
+	geographicalImpossibility(roomWeClick);	
+	haveYouBeenHere(roomWeClick);
+    doYouHaveTheKey(roomWeClick);
+    roomSelect(roomWeClick);
+
+
+}
 
 /////////////////////////////////////////PICK UP ITEM AND ADD TO INVENTORY/////////////////////////////////////////
 
@@ -346,44 +333,45 @@ $(document).ready(function () {
 
 			$("#bookshelfDisappears").delay(600).fadeOut(600);
 			$(".hiddenLink").delay(20000).fadeIn(500);
-		})
-	})
+		});
+
+
 
 	$("#library").click(function() {
-		librarySelect("#library");
-	})
+		masterClick("#library");
+	});
 
 	$("#stairs").click(function() {
-		roomSelect("#stairs");
-	})
+		masterClick("#stairs");
+	});
 
 	$("#bread").click(function() {
-		roomSelect("#bread");
-	})
+		masterClick("#bread");
+	});
 
 	$("#flowers").click(function() {
-		roomSelect("#flowers");
-	})
+		masterClick("#flowers");
+	});
 
 	$("#jewels").click(function() {
-		roomSelect("#jewels");
-	})
+		masterClick("#jewels");
+	});
 
 	$("#mouths").click(function() {
-		roomSelect("#mouths");
-	})
+		masterClick("#mouths");
+	});
 
 	$("#mirrors").click(function() {
-		roomSelect("#mirrors");
-	})
+		masterClick("#mirrors");
+	});
 
 	$("#rain").click(function() {
-		roomSelect("#rain");
-	})
+		masterClick("#rain");
+	});
 
 	$("#hands").click(function() {
-		roomSelect("#hands");
-	})
+		masterClick("#hands");
+	});
 
 // SCENARIO ONE: INVENTORY INCLUDES BOOK 1 AND TINY DOLL
 
@@ -391,14 +379,13 @@ $(document).ready(function () {
 
 // SCENARIO THREE: INVENTORY INCLUDES BOOK 3 AND WATER
 
-
-
 // end document ready
 });
 
 /// if you're in library and you click on corner rooms, an error message pops up. else roomSelect function fires
 
 /////////////// BUGS /////////////////
+//CONTINUED CHAOS WITH CLICK FUNCTION
 // WHY WHY WHY YY DOESN'T INVENTORY .INCLUDES COMMAND WORK? SHOULD WE TURN THE ARRAYS INTO A STRING?
 // LOCKEDDOOR FUNCTION: ACCESS ROOM OBJECT ROOMKEY ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
 // FINISH ROOMSELECT FUNCTION WITH THREE IF STATEMENTS IN EXACT ORDER (ANAHIT'S DIAGRAM)
@@ -412,6 +399,7 @@ $(document).ready(function () {
 
 
 /////////// ACCOMPLISHMENTS /////////////
+// SCRAPPED PARTS OF ROOMSELECT FUNCTION AND BEGAN WORK ON MASTERCLICK FUNCTION
 // CREATED KEY ARRAYS AND SUCCESSFULLY POINTED TO THEM IN THE CODE WITH VARIABLES
 // FIGURE OUT HOW TO ACCESS ROOM OBJECT ARRAYS TO SEE IF YOU CAN ENTER BASED ON CANTGO 
 // TRY TO REWRITE ROOM OBJECTS IN THE OTHER WAY
@@ -432,6 +420,3 @@ $(document).ready(function () {
 // HOW DO WE WRAP TEXT? HOW DO WE MAKE PARAGRAPHS? 
 // NEXT PART OF LIBRARY SEQUENCE: TEXT ABOUT DISAPPEARING BOOKSHELF AND EMPTY BOOK: FIX TYPING ANIMATION!!!!!
 // WHEN SHOULD BACK BUTTON BE VISIBLE? HOW DO WE STOP PLAYER FROM GOING BACK DURING ANIMATIONS, ETC
-
-
-
