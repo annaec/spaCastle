@@ -1,3 +1,6 @@
+<!--NEXT TIME: clean up roomGrow, beginning library sequence with disappearing bookshelf -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -11,114 +14,119 @@
 	</head>
 	<body>
 		<div id="container">
-
 			<div class="map">
-			<!-- <a href="stairs.html"> -->
-				<div class="rooms" id="stairs">
+				<div class="room" id="stairs">
 					<p>Stairs</p>
-					<!-- <img src="images/diamond.svg"> -->
-				</div>
-			<!-- </a> -->
 
-			<a href="bread.html">
-				<div class="rooms" id="bread">
+						<div class="token" id="frame">FRAME</div>	
+
+				</div>
+
+				<div class="room" id="bread">
 					<p>Bread</p>
-					<!-- <img src="images/wine.svg"> -->
+					
+						<div class="token" id="loaf">LOAF</div>
+					
 				</div>
-			</a>
-			<a href="flowers.html">
-				<div class="rooms" id="flowers">
+			
+				<div class="room" id="flowers">
 					<p>Flowers</p>
-					<!-- <img src="images/coat.svg"> -->
+
+						<div class="token" id="seed">SEED</div>
+					
 				</div>
-			</a>
-			<a href="jewels.html">
-				<div class="rooms" id="jewels">
+			
+				<div class="room" id="jewels">
 					<p>Jewels</p>
-					<!-- <img src="images/torches.svg"> -->
+
+						<div class="token" id="ring">RING</div>
+
+						<div class="token" id="ruby">RUBY</div>
+					
 				</div>
-			</a>
-				<!-------------what link for library?---->
-				<div class="rooms mapArrival " id="library">
+
+<!---------------------------- INSIDE LIBRARY ------------------------------>
+
+				<div class="room" id="library">
+
 					<p>Library</p>
-					<!-- <img src="images/castle.svg"> -->
+					<div class="insideLibrary" id="begin">BEGIN</div>
+					<div class="insideLibrary" id="bookShelf">BOOKSHELF</div>
+					<div class="insideLibrary" id="shelfRoom">
+						<div class="chooseBook" id="secretOne"><div class="secretBook" id="secretBookOne">BOOK ONE</div></div>
+						<div class="chooseBook" id="secretTwo"><div class="secretBook" id="secretBookTwo">BOOK TWO</div></div>
+						<div class="chooseBook" id="secretThree"><div class="secretBook" id="secretBookThree">BOOK THREE</div></div>
+					</div>
+
+					<div class="insideLibrary" id="emptyBook">
+						<div class="continue">CONTINUE?</div>
+						 EMPTY BOOK
+					</div>
+
+					<div ></div>								
 				</div>
-			<a href="mouths.html">
-				<div class="rooms" id="mouths">
+
+<!---------------------------- LIBRARY OVER ------------------------------>				
+			
+				<div class="room" id="mouths">
 					<p>Mouths</p>
-					<!-- <img src="images/bread.svg"> -->
+
+						<div class="token" id="tooth">TOOTH</div>
+
+						<div class="token" id="radio">RADIO</div>
+					
 				</div>
-			</a>
-			<a href="mirrors.html">
-				<div class="rooms" id="mirrors">
+			
+				<div class="room" id="mirrors">
 					<p>Mirrors</p>
-					<!-- <img src="images/mirror.svg"> -->
+
+						<div class="token" id="glass">GLASS</div>
+
+						<div class="token" id="tinyDoll">DOLL</div>
+					
 				</div>
-			</a>
-			<a href="rain.html">
-				<div class="rooms" id="rain">
+			
+				<div class="room" id="rain">
 					<p>Rain</p>
-					<!-- <img src="images/sword.svg"> -->
+						
+						<div class="token" id="water">WATER</div>
+
+						<div class="token" id="worm">WORM</div>
+					
 				</div>
-			</a>
-			<a href="hands.html">
-				<div class="rooms" id="hands">
+			
+				<div class="room" id="hands">
 					<p>Hands</p>
-					<!-- <img src="images/dagger.svg"> -->
+						
+						<div class="token" id="candle">CANDLE</div>
+
+						<div class="token" id="knife">KNIFE</div>
+					
 				</div>
-			</a>
+			
 			</div><!-- #map -->
 
 
 			<div class="inventory">
 				<h2>INVENTORY</h2>	
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
-				<div class="tokens">
-					<img src="">
-				</div>
 			</div>
 
-			<div class="dialogueBox slider closed" id="console">
-				<p>Hello Small Lady ...</p>
-				<p> Welcome to Spa Castle<span>|</span></p>
-				<div id="placeholder"></div>
+<!-------------DIALOGUE!!!!!!--------------------------------->
 
+			<div class="dialogueBox" id="welcome">
+				<p>Hello Small Lady ... <br>
+				Welcome to Spa Castle <span>|</span></p>
 			</div>
+
+			<div class="dialogueBox" id="bookshelfDisappears">
+				<p>Uh oh! Where did that bookshelf just go?
+				Oh well, this house is weird...
+				Now you have an empty book. What good is that?
+				There's something on the ground that wasn't there before...<span>|</span></p>
+			</div>
+
+
+			<a class="hiddenLink">BACK</a>
 			
 		</div><!-- #container --> 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
