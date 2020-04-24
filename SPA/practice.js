@@ -180,7 +180,7 @@ let rainKeys = rainCantGo[0];
 	function roomSelect(roomWeClick) {
 		// clearMap();
 
-		let  currentRoom = player.currentLocation;
+		let currentRoom = player.currentLocation;
 		currentRoom = roomWeClick;
 		console.log(currentRoom);
         
@@ -382,7 +382,6 @@ function masterClick(roomWeClick){
 	$("#hands").click(function() {
 		masterClick("#hands");
 	});
-
 
 
 // SCENARIO ONE: INVENTORY INCLUDES BOOK 1 AND TINY DOLL
