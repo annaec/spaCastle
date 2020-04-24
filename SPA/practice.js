@@ -94,16 +94,27 @@ let flowersRoom =  {
 };
 
 
+////////////////////////////////////////////////////////VALUE ARRAYS FROM ROOM OBJECTS///////////////////////////////////////////////
+
+let flowersRoomValues = Object.values(flowersRoom);
+let jewelsRoomValues = Object.values(jewelsRoom);
+let mouthsRoomValues = Object.values(mouthsRoom);
+let breadRoomValues = Object.values(breadRoom);
+let stairsRoomValues = Object.values(stairsRoom);
+let mirrorsRoomValues = Object.values(mirrorsRoom);
+let handsRoomValues = Object.values(handsRoom);
+let rainRoomValues = Object.values(rainRoom);
+
 ////////////////////////////////////////////////////////CANTGO VARIABLES///////////////////////////////////////////////
 
-let flowersCantGo = Object.values(flowersRoom);
-let jewelsCantGo = Object.values(jewelsRoom);
-let mouthsCantGo = Object.values(mouthsRoom);
-let breadCantGo = Object.values(breadRoom);
-let stairsCantGo = Object.values(stairsRoom);
-let mirrorsCantGo = Object.values(mirrorsRoom);
-let handsCantGo = Object.values(handsRoom);
-let rainCantGo = Object.values(rainRoom);
+let flowersCantGo = Object.values(flowersRoomValues[3]);
+let jewelsCantGo = Object.values(jewelsRoomValues[3]);
+let mouthsCantGo = Object.values(mouthsRoomValues[3]);
+let breadCantGo = Object.values(breadRoomValues[3]);
+let stairsCantGo = Object.values(stairsRoomValues[3]);
+let mirrorsCantGo = Object.values(mirrorsRoomValues[3]);
+let handsCantGo = Object.values(handsRoomValues[3]);
+let rainCantGo = Object.values(rainRoomValues[3]);
 
 ////////////////////////////////////////////////////////KEY VARIABLES///////////////////////////////////////////////
 
@@ -287,7 +298,6 @@ function masterClick(roomWeClick){
 			$("#shelfRoom").fadeIn();	
 		})
 
-
 ////////////////////////////////////////////////////CHOOSING A SECRET //////////////////////////////////////////////
 
 		$("#secretOne").click(function() {	
@@ -372,6 +382,8 @@ function masterClick(roomWeClick){
 	$("#hands").click(function() {
 		masterClick("#hands");
 	});
+
+
 
 // SCENARIO ONE: INVENTORY INCLUDES BOOK 1 AND TINY DOLL
 
