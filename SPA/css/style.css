@@ -139,10 +139,10 @@ ul {
   border: 5px dotted black;
   position: fixed;
   display:none;
-  left: 50%;
-  bottom: 8px;
+  left: 14%;
+  bottom: 40px;
   transform: translateX(-50%);
-  width:600px;
+  width:300px;
 }
 
 .inventory h2{

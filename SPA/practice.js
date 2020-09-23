@@ -1,6 +1,6 @@
 
 
-///////////////////////////////////////////////DOM ELEMENT letIABLES////////////////////////////////////////
+///////////////////////////////////////////////DOM ELEMENT VARIABLES////////////////////////////////////////
 
 let inventory = $(".inventory")
 let token = $(".token"); 
@@ -17,25 +17,6 @@ let player = new Player([], $("#library"), 6);
 let playerInventory = player.inventoryArray;
 
 /////////////////////////////////////////////////ROOM OBJECTS //////////////////////////////////////////////////////
-
-/*let pusheen = {  
-	name: 'Pusheen',  
-	age: 7,  
-	colors: ['gray', 'tabby']
-};
-console.log(pusheen.colors[0]);
-console.log(pusheen.colors[1]);
-
-var foo = {
-  bar: ['foo', 'bar', 'baz']
-};
-
-// access
-foo.bar[2]; // will give you 'baz'
-
-USE FOR LOOP TO CYCLE THROUGH CANTGO Array AND CHECK IF ROOMCLICKED IS IN IT
-*/
-
 
 let rainRoom =  {
 	keys: [$("#seed"), $("#tinyDoll")], 
@@ -341,7 +322,7 @@ function masterClick(roomWeClick){
 				  setTimeout(type, 60);
 				}());
 
-			$("#bookshelfDisappears").delay(600).fadeOut(600);
+			$("#bookshelfDisappears").delay(12000).fadeOut(600);
 			$(".hiddenLink").delay(20000).fadeIn(500);
 		});
 
@@ -403,7 +384,7 @@ function masterClick(roomWeClick){
 // -figure out how to attach functions to objects 
 // -figure out how to trigger token events in each room
 // -USE SECRET IN INVENTORY TO AFFECT END OF GAME (if secret x in inventory and special token used in certain room, end game)
-// HOW TO PUT TYPE FUNCTION INTO A letIABLE TO REUSE 
+// HOW TO PUT TYPE FUNCTION INTO A VARIABLE TO REUSE 
 // ROOMS WILL HAVE DARKROOM OVERLAY UNTIL THEY ARE UNLOCKED SO OBJECTS DO NOT HAVE TO BE INVISIBLE
 // MAKE SURE PLAYER CAN ONLY CLICK ONE OBJECT IN ROOM AT A TIME
 // MAKE SURE YOU CANT PICK UP HIDDEN ITEMS BY ACCIDENT
